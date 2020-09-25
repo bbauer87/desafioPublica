@@ -1,8 +1,8 @@
 import sqlite3
 
 class BD():
-    def __init__(self, nome_banco, temporada = 2020):
-        self.conexao = sqlite3.connect(f"BDs\\{nome_banco}")
+    def __init__(self, caminho_banco, temporada = 2020):
+        self.conexao = sqlite3.connect(caminho_banco)
         self.cursor = self.conexao.cursor()
         self.tabela = f"temporada_{temporada}"
 

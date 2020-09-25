@@ -14,14 +14,15 @@ class Controlador():
             elif argv[1] == "CLI":
                 self.cli()
             else:
-                raise IndexError
-        except IndexError:
+                raise Exception
+        except Exception as e:
             print("\nErro! O programa deve ser iniciado com um dos seguintes parâmetros: 'GUI' ou 'CLI'...\n")
+            print(e)
             quit()
 
     def busca_bds(self):
-        diretorio = os.path.dirname(__file__) + "\\BDs"
-        self.bancos = [file for file in os.listdir(diretorio) if file.endswith(".db")]
+        self.diretorio = os.path.dirname(__file__) + "\\BDs\\"        
+        self.bancos = [file for file in os.listdir(self.diretorio) if file.endswith(".db")]
 
     def cli(self):
         self.visao = cli.Cli(self.bancos)
@@ -29,11 +30,12 @@ class Controlador():
 
         try:
             if nome_bd in self.bancos:
-                bd = BD(nome_bd)
+                bd = BD(self.diretorio + nome_bd)
             else:
-                bd = BD(nome_bd, temporada)
-        except:
+                bd = BD(self.diretorio + nome_bd, temporada)
+        except Exception as e:
             print(f"\nErro fatal na conexão com o BD '{nome_bd}'!\n")
+            print(e)
             quit()
 
         while True:
@@ -61,7 +63,7 @@ class Controlador():
                         quebra_min += 1
                         print("Um novo placar mínimo na temporada foi registrado!")
                         
-                    elif parametro > placar_min:
+                    elif parametro > placar_max:
                         tipo = "novo máximo"
                         quebra_max += 1                        
                         print("Um novo placar máximo na temporada foi registrado!")
