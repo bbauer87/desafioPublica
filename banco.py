@@ -26,38 +26,35 @@ class BD():
         self.cursor.close()
         self.conexao.close()
 
-    def printa_tabela(self):
-        self.cursor.execute(f"SELECT rowid, * FROM {self.tabela}")
-        itens = self.cursor.fetchall()
+    def printa_tabela(self):        
         colunas = ["JOGO", "PLACAR", "MÍNIMO DA TEMPORADA", "MÁXIMO DA TEMPORADA", "QUEBRA RECORDE MÍN.", "QUEBRA RECORDE MÁX."]
 
-        return itens, colunas
+        return self.retorna_tabela("inteira"), colunas
 
     def retorna_tabela(self, tipo):
         if tipo == "última linha":
-            self.cursor.execute(f"SELECT * FROM {self.tabela} ORDER BY rowid DESC LIMIT 1")
-            itens = self.cursor.fetchall()[0]
+            self.cursor.execute(f"SELECT rowid, * FROM {self.tabela} ORDER BY rowid DESC LIMIT 1")
 
         if tipo == "inteira":
             self.cursor.execute(f"SELECT rowid, * FROM {self.tabela}")
-            itens = self.cursor.fetchall()
 
-        return itens
+        return self.cursor.fetchall()
 
-    def add_placar_1(self, placar):
-        self.cursor.execute(f"INSERT INTO {self.tabela} VALUES (?,?,?,?,?)", (placar, placar, placar, 0, 0))
-        self.conexao.commit()
-
-    def add_placar_2(self, lista, tipo):
-        placar, placar_min, placar_max, quebra_min, quebra_max = lista[0], lista[1], lista[2], lista[3], lista[4]
+    def adiciona_placar(self, lista_ou_int, tipo):
+        if type(lista_ou_int) == list:
+            placar, placar_min, placar_max, quebra_min, quebra_max = lista_ou_int
         
         if tipo == "novo mínimo":
-            self.cursor.execute(f"INSERT INTO {self.tabela} VALUES (?,?,?,?,?)", (placar, placar, placar_max, quebra_min, quebra_max))
+            valores = (placar, placar, placar_max, quebra_min, quebra_max)
 
         elif tipo == "novo máximo":
-            self.cursor.execute(f"INSERT INTO {self.tabela} VALUES (?,?,?,?,?)", (placar, placar_min, placar, quebra_min, quebra_max))
+            valores = (placar, placar_min, placar, quebra_min, quebra_max)
 
+        elif tipo == "normal":
+            valores = (placar, placar_min, placar_max, quebra_min, quebra_max)
+            
         else:
-            self.cursor.execute(f"INSERT INTO {self.tabela} VALUES (?,?,?,?,?)", (placar, placar_min, placar_max, quebra_min, quebra_max))
+            valores = (lista_ou_int, lista_ou_int, lista_ou_int, 0, 0)
 
+        self.cursor.execute(f"INSERT INTO {self.tabela} VALUES (?,?,?,?,?)", valores)
         self.conexao.commit()

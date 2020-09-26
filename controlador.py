@@ -34,7 +34,7 @@ class Controlador():
             else:
                 bd = BD(self.diretorio + nome_bd, temporada)
         except Exception as e:
-            print(f"\nErro fatal na conexão com o BD '{nome_bd}'!\n")
+            print(f"\nErro fatal na conexão com o BD '{nome_bd}'!\n\n")
             print(e)
             quit()
 
@@ -51,11 +51,9 @@ class Controlador():
                 itens_serie = bd.retorna_tabela("inteira")
                 
                 if len(itens_serie) > 0:                 
-                    ultima_linha = bd.retorna_tabela("última linha")
-                    placar_min = ultima_linha[1]
-                    placar_max = ultima_linha[2]
-                    quebra_min = ultima_linha[3]
-                    quebra_max = ultima_linha[4]
+                    ultima_linha = bd.retorna_tabela("última linha")[0][2:]
+                    placar_min, placar_max, quebra_min, quebra_max = ultima_linha
+                    
                     tipo = "normal"
 
                     if parametro < placar_min:
@@ -68,10 +66,10 @@ class Controlador():
                         quebra_max += 1                        
                         print("Um novo placar máximo na temporada foi registrado!")
 
-                    bd.add_placar_2([parametro, placar_min, placar_max, quebra_min, quebra_max], tipo)
+                    bd.adiciona_placar([parametro, placar_min, placar_max, quebra_min, quebra_max], tipo)
 
                 else:                  
-                    bd.add_placar_1(parametro)
+                    bd.adiciona_placar(parametro, "primeiro jogo")
 
 
 
