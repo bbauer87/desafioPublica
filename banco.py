@@ -1,7 +1,8 @@
 import sqlite3
+from datetime import datetime
 
-class BD():
-    def __init__(self, caminho_banco, temporada = 2020):
+class BD:
+    def __init__(self, caminho_banco, temporada = datetime.now().year):
         self.conexao = sqlite3.connect(caminho_banco)
         self.cursor = self.conexao.cursor()
         self.tabela = f"temporada_{temporada}"
@@ -20,6 +21,15 @@ class BD():
                           quebra_min INTEGER NOT NULL,
                           quebra_max INTEGER NOT NULL)""")
 
+        self.conexao.commit()
+
+    def verifica_tabelas(self):#tem q fazer test unit
+        self.cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
+
+        return self.cursor.fetchall()
+
+    def deleta_tabela(self, tabela):   #tem q fazer test unit     
+        self.cursor.execute(f"DROP TABLE {tabela}")
         self.conexao.commit()
 
     def encerra(self):
@@ -58,3 +68,54 @@ class BD():
 
         self.cursor.execute(f"INSERT INTO {self.tabela} VALUES (?,?,?,?,?)", valores)
         self.conexao.commit()
+
+
+    def soma_placares(self):#fazer td test unit
+        self.cursor.execute(f"SELECT SUM(placar) FROM {self.tabela}")
+
+        return self.cursor.fetchall()[0][0]
+
+
+    def media_placares(self):#fazer td test unit
+        self.cursor.execute(f"SELECT AVG(placar) FROM {self.tabela}")
+
+        return self.cursor.fetchall()[0][0]
+        
+
+    def top_5(self, tipo):#fazer td test unit
+        self.cursor.execute(f"SELECT placar FROM {self.tabela} ORDER BY placar DESC LIMIT 5")
+        
+        if tipo == "soma":
+            return sum([x[0] for x in self.cursor.fetchall()])            
+
+        else:
+            return [x[0] for x in self.cursor.fetchall()]
+        
+
+    def top_5_piores(self, tipo):#fazer td test unit
+        self.cursor.execute(f"SELECT placar FROM {self.tabela} ORDER BY placar LIMIT 5")
+
+        if tipo == "soma":
+            return sum([x[0] for x in self.cursor.fetchall()])            
+
+        else:
+            return [x[0] for x in self.cursor.fetchall()]
+
+
+    def printa_tabela_2(self):
+        estatisticas_1 = [[self.soma_placares(),
+                          self.media_placares(),
+                          self.top_5("soma"),
+                          self.top_5_piores("soma")]]
+
+        estatisticas_2 = []
+        t5 = self.top_5("lista")
+        t5_piores = self.top_5_piores("lista")
+
+        for x in range(len(t5)):
+            estatisticas_2.append([t5[x], t5_piores[x]])
+        
+        colunas_1 = ["SOMA DOS PLACARES", "MÉDIA DOS PLACARES", "SOMA DO TOP 5 PLACARES", "SOMA DO TOP 5 PIORES PLACARES"]
+        colunas_2 = ["TOP 5 PLACARES", "TOP 5 PIORES PLACARES"]
+
+        return estatisticas_1, estatisticas_2, colunas_1, colunas_2
