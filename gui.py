@@ -65,143 +65,144 @@ ICONE = ".\\Misc\\ball.ico"
 
 
 
-def sobre():
-    pass
+
 
 
 
 
  
-##class PaginaTutorial(tk.Frame):
-##
-##    def __init__(self, parent, controller):
-##        tk.Frame.__init__(self, parent)
-##
-##        container1 = tk.LabelFrame(self)
-##        container1.pack(side = "left", fill = "y", expand = True)
-##
-##        #msg dizendo TUTORIAIS:
-##
-##        botao1 = ttk.Button(container1, text="Como adicionar um jogo?", command= lambda: self.imprime("add jogo"))
-##        botao1.pack(padx=10, pady=10)
-##        
-##        botao2 = ttk.Button(container1, text="Como visualizar as tabelas?",command=  lambda: self.imprime("tabelas"))
-##        botao2.pack(padx=10, pady=10)
-##        
-##        botao3 = ttk.Button(container1, text="Como visualizar o gráfico?", command= lambda: self.imprime("gráfico"))
-##        botao3.pack(padx=10, pady=10)
-##        
-##        botao4 = ttk.Button(container1, text="Como alterar, criar ou deletar\numa temporada?", command= lambda: self.imprime("temporadas"))
-##        botao4.pack(padx=10, pady=10)
-##        
-##        botao5 = ttk.Button(container1, text="Como alterar, criar ou deletar\num banco de dados?", command= lambda: self.imprime("bancos"))
-##        botao5.pack(padx=10, pady=10)
-##        
-##        botao6 = tk.Button(container1, text="Sair", command=lambda: controller.ativa_frame("PaginaInicial"), bg='brown',fg='white')
-##        botao6.pack(padx=10, pady=30)
-##
-##        container2 = tk.LabelFrame(self)
-##        container2.pack(side = "right", fill = "y", expand = True)
-##
-##        self.msg = ttk.Label(container2, text="Escolha uma opção de tutorial...")
-##        self.msg.pack()
-##
-##
-##    def imprime(self, opcao):
-####        self.msg["text"] = ""
-##
-##        if "add" in opcao:
-##            self.msg["text"] = """
-##
-##Para adicionar um jogo, vá até o menu Arquivo -> Adicionar um jogo 
-##ou clique em Adicionar placar na tela inicial.
-##
-##Em seguida, insira um número de 1 a 999 na janela que será aberta."""
-##
-##        elif "tabelas" in opcao:
-##            self.msg["text"] = """
-##Para visualizar as tabelas, vá até o menu Estatísticas -> Consultar 
-##tabelas ou clique em Tabelas na tela inicial.
-##
-##A tela mudará de aparência e então deve-se clicar no botão "Busca 
-##tabela", o qual atualizará a interface com os dados do BD.
-##
-##Caso a tabela não tenha nenhum jogo inserido, nenhum dado será 
-##mostrado."""
-##            
-##        elif "gráfico" in opcao:
-##            self.msg["text"] = """
-##Para visualizar um gráfico com base nos dados da temporada, vá até o 
-##menu Estatísticas -> Consultar gráfico ou clique em Gráfico na tela 
-##inicial.
-##
-##A tela mudará de aparência e então deve-se clicar no botão "Gerar 
-##gráfico". A tabela deverá conter pelo dois jogos pois do contrário o 
-##gráfico aparentará ter gerado erro.
-##
-##Com o gráfico gerado, aparecerá na tela sete ícones, os quais da 
-##esquerda pra direita oferecem as seguintes opções:
-##
-##  1 - Retorna a visão original do gráfico;
-##  2 - Visão anterior do gráfico;
-##  3 - Próxima visão do gráfico;
-##  4 - Navega pelo gráfico com o botão esquerdo do mouse, enquanto que o botão
-##  direito permite zoom;
-##  5 - Ativa o zoom conforme se "desenha" um retângulo com o botão 
-##  esquerdo do mouse pressionado;
-##  6 - Oferece opções de configurações do gráfico, como altura dos 
-##  eixos, distância das colunas, etc;
-##  7 - Permite salvar uma imagem do gráfico gerado."""
-##            
-##        elif "temporadas" in opcao:
-##            self.msg["text"] = """
-##Para alterar ou criar uma temporada, vá até o menu Arquivo -> 
-##Alterar/Criar temporada ou clique em Alterar/Criar no campo 
-##Temporadas da tela inicial.
-##
-##Será aberta uma nova janela onde primeiro deve-se escolher um dos 
-##botões: "temporadas localizadas" ou "criar temporada".
-##
-##Para alterar a temporada, clique no respectivo botão e depois clique 
-##em "Buscar temporadas". Caso a lista não esteja vazia, escolha uma 
-##das opções e clique em Confirmar.
-##
-##Para criar uma temporada, clique no respectivo botão e então digite 
-##um valor para numerar a temporada (de 1 a 10000), e clique em 
-##Confirmar.
-##
-##
-##Para deletar uma temporada, vá até o menu Arquivo -> Deletar 
-##temporada ou clique em Deletar no campo Temporadas da tela inicial.
-##
-##Será aberta uma nova janela caso o BD atual tenha mais de uma 
-##temporada. Deve-se então escolher na lista uma temporada e clicar em 
-##Confirmar."""
-##            
-##        else:
-##            self.msg["text"] = """
-##Para alterar ou criar um banco de dados, vá até o menu Arquivo -> 
-##Alterar/Criar banco de dados ou então clique em Alterar/Criar no 
-##campo Banco de Dados da tela inicial.
-##
-##Será aberta uma nova janela onde primeiro deve-se escolher um dos 
-##botões: "Escolher BD" ou "Criar BD".
-##
-##Para alterar o BD, clique no respectivo botão e depois clique em 
-##"Buscar BDs". Caso a lista não esteja vazia, escolha uma das opções 
-##e clique em Confirmar.
-##
-##Para criar um BD, clique no respectivo botão e então digite um nome 
-##e em seguida um valor para numerar a temporada (de 1 a 10000), e 
-##então clique em Confirmar.
-##
-##
-##Para deletar um BD, vá até o menu Arquivo -> Deletar 
-##banco de dados ou clique em Deletar no campo Banco de Dados na tela inicial.
-##
-##Será aberta uma nova janela caso o diretório tenha mais de um 
-##BD. Deve-se então escolher na lista um banco e clicar em 
-##Confirmar."""
+class PaginaTutorial(tk.Frame):
+
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+
+        container1 = tk.LabelFrame(self)
+        container1.pack(side = "left", fill = "both", expand = True)
+
+        titulo = ttk.Label(container1, text="TUTORIAIS:", font=("Calibri", "15"))
+        titulo.pack(padx=20, pady=40)
+
+        #msg dizendo TUTORIAIS:
+
+        botao1 = ttk.Button(container1, text="Como adicionar um jogo?", command= lambda: self.imprime("add jogo"))
+        botao1.pack(padx=10, pady=10)
+        
+        botao2 = ttk.Button(container1, text="Como visualizar as tabelas?",command=  lambda: self.imprime("tabelas"))
+        botao2.pack(padx=10, pady=10)
+        
+        botao3 = ttk.Button(container1, text="Como visualizar o gráfico?", command= lambda: self.imprime("gráfico"))
+        botao3.pack(padx=10, pady=10)
+        
+        botao4 = ttk.Button(container1, text="Como alterar, criar ou deletar\numa temporada?", command= lambda: self.imprime("temporadas"))
+        botao4.pack(padx=10, pady=10)
+        
+        botao5 = ttk.Button(container1, text="Como alterar, criar ou deletar\num banco de dados?", command= lambda: self.imprime("bancos"))
+        botao5.pack(padx=10, pady=10)
+        
+        botao6 = tk.Button(container1, text="Sair", command=lambda: controller.ativa_frame("PaginaInicial"), bg='brown',fg='white')
+        botao6.pack(padx=10, pady=30)
+
+        container2 = tk.LabelFrame(self)
+        container2.pack(side = "right", fill = "both", expand = True)
+
+        self.msg = ttk.Label(container2, text="\n\n\n\n\n\nEscolha uma opção de tutorial..." , font=("Calibri", "15"), justify=tk.CENTER)
+        self.msg.pack()
+
+
+    def imprime(self, opcao):
+
+        if "add" in opcao:
+            self.msg["text"] = """
+
+Para adicionar um jogo, vá até o menu Arquivo -> Adicionar um jogo 
+ou clique em Adicionar placar na tela inicial.
+
+Em seguida, insira um número de 1 a 999 na janela que será aberta."""
+
+        elif "tabelas" in opcao:
+            self.msg["text"] = """
+Para visualizar as tabelas, vá até o menu Estatísticas -> Consultar 
+tabelas ou clique em Tabelas na tela inicial.
+
+A tela mudará de aparência e então deve-se clicar no botão "Busca 
+tabela", o qual atualizará a interface com os dados do BD.
+
+Caso a tabela não tenha nenhum jogo inserido, nenhum dado será 
+mostrado."""
+            
+        elif "gráfico" in opcao:
+            self.msg["text"] = """
+Para visualizar um gráfico com base nos dados da temporada, vá até o 
+menu Estatísticas -> Consultar gráfico ou clique em Gráfico na tela 
+inicial.
+
+A tela mudará de aparência e então deve-se clicar no botão "Gerar 
+gráfico". A tabela deverá conter pelo dois jogos pois do contrário o 
+gráfico aparentará ter gerado erro.
+
+Com o gráfico gerado, aparecerá na tela sete ícones, os quais da 
+esquerda pra direita oferecem as seguintes opções:
+
+  1 - Retorna a visão original do gráfico;
+  2 - Visão anterior do gráfico;
+  3 - Próxima visão do gráfico;
+  4 - Navega pelo gráfico com o botão esquerdo do mouse, enquanto
+  que o botão direito permite zoom;
+  5 - Ativa o zoom conforme se "desenha" um retângulo com o botão
+  esquerdo do mouse pressionado;
+  6 - Oferece opções de configurações do gráfico, como altura dos
+  eixos, distância das colunas, etc;
+  7 - Permite salvar uma imagem do gráfico gerado."""
+            
+        elif "temporadas" in opcao:
+            self.msg["text"] = """
+Para alterar ou criar uma temporada, vá até o menu Arquivo -> 
+Alterar/Criar temporada ou clique em Alterar/Criar no campo 
+Temporadas da tela inicial.
+
+Será aberta uma nova janela onde primeiro deve-se escolher um dos 
+botões: "temporadas localizadas" ou "criar temporada".
+
+Para alterar a temporada, clique no respectivo botão e depois clique 
+em "Buscar temporadas". Caso a lista não esteja vazia, escolha uma 
+das opções e clique em Confirmar.
+
+Para criar uma temporada, clique no respectivo botão e então digite 
+um valor para numerar a temporada (de 1 a 10000), e clique em 
+Confirmar.
+
+
+Para deletar uma temporada, vá até o menu Arquivo -> Deletar 
+temporada ou clique em Deletar no campo Temporadas da tela inicial.
+
+Será aberta uma nova janela caso o BD atual tenha mais de uma 
+temporada. Deve-se então escolher na lista uma temporada e clicar em 
+Confirmar."""
+            
+        else:
+            self.msg["text"] = """
+Para alterar ou criar um banco de dados, vá até o menu Arquivo -> 
+Alterar/Criar banco de dados ou então clique em Alterar/Criar no 
+campo Banco de Dados da tela inicial.
+
+Será aberta uma nova janela onde primeiro deve-se escolher um dos 
+botões: "Escolher BD" ou "Criar BD".
+
+Para alterar o BD, clique no respectivo botão e depois clique em 
+"Buscar BDs". Caso a lista não esteja vazia, escolha uma das opções 
+e clique em Confirmar.
+
+Para criar um BD, clique no respectivo botão e então digite um nome 
+e em seguida um valor para numerar a temporada (de 1 a 10000), e 
+então clique em Confirmar.
+
+
+Para deletar um BD, vá até o menu Arquivo -> Deletar 
+banco de dados ou clique em Deletar no campo Banco de Dados na tela inicial.
+
+Será aberta uma nova janela caso o diretório tenha mais de um 
+BD. Deve-se então escolher na lista um banco e clicar em 
+Confirmar."""
 
 
 
@@ -470,11 +471,11 @@ class Gui(tk.Tk):
         sep2.configure(orient = "horizontal")
         sep2.grid(row = 6, column = 0, columnspan = 6, sticky = "we")
 
-        self.botao_buscar = tk.Button(janela, text = "Buscar temporadas", command= lambda: buscar(self.controlador.altera_cria_temp("inicial")), bg='brown',fg='white')
+        self.botao_buscar = tk.Button(janela, text = "Buscar temporadas", command= lambda: buscar(self.controlador.altera_cria_temp("inicial")), bg='blue',fg='white')
         self.botao_buscar.grid(row = 7, column = 0, pady = 10)
 
 
-        botao1 = tk.Button(janela, text = "Sair", command = janela.destroy, bg='brown',fg='white')
+        botao1 = tk.Button(janela, text = "Sair", command = janela.destroy, bg='orange',fg='white')
         botao1.grid(row = 7, column = 3, pady = 10, padx = 30)
 
         botao2 = tk.Button(janela, text = "Confirmar", command = confirmar, bg='green',fg='white')
@@ -490,6 +491,28 @@ class Gui(tk.Tk):
         tk.mainloop()
 
 
+    def sobre(self):        
+        janela = tk.Tk()
+        janela.iconbitmap(janela, ICONE)
+        janela.wm_title("Sobre")
+
+        titulo = ttk.Label(janela, text="Registro de pontuação", font=("Calibri", "17"))
+        titulo.pack(pady=15)
+
+        msg = ttk.Label(janela, text="""
+---------------------------------------------------------------
+Programa desenvolvido por Bruno Silveira Bauer
+como parte do processo seletivo realizado pela
+ProWay em conjunto com Pública Tecnologia.
+---------------------------------------------------------------
+
+                  Porto Alegre - RS - 2020""", font=("Calibri", "12"))
+        msg.pack(pady=15, padx=15)
+
+        botao1 = tk.Button(janela, text = "Sair", command = janela.destroy, bg='brown', fg='white')
+        botao1.pack(pady=15)
+        
+    
     def janela_banco(self):
 
         def escolhas(param):
@@ -659,6 +682,7 @@ class Gui(tk.Tk):
             tk.Tk.wm_title(self, f"Registro de pontuação | Conectando...")
             
             container = tk.Frame(self)
+            container.pack(side = "top", fill = "both", expand = True)
 
             barra_menu = tk.Menu(container)
             menu_arquivo = tk.Menu(barra_menu, tearoff=0)
@@ -683,16 +707,16 @@ class Gui(tk.Tk):
 
             menu_estats = tk.Menu(barra_menu, tearoff=0)
             menu_estats.add_command(label="Consultar gráfico",
-                                    command=lambda: self.ativa_frame("PaginaGrafico"))#pronto e bombamdexter
+                                    command=lambda: self.ativa_frame("PaginaGrafico"))
             menu_estats.add_command(label="Consultar tabelas",
-                                    command=lambda: self.ativa_frame("PaginaTabelas"))#pronto e bombamdexter
+                                    command=lambda: self.ativa_frame("PaginaTabelas"))
             barra_menu.add_cascade(label = "Estatísticas", menu = menu_estats)
             
             menu_ajuda = tk.Menu(barra_menu, tearoff=0)
-            menu_ajuda.add_command(label="Sobre", command=sobre)#nadal
+            menu_ajuda.add_command(label="Tutoriais", command=lambda: self.ativa_frame("PaginaTutorial"))
             menu_ajuda.add_separator()
-            
-##            menu_ajuda.add_command(label="Tutorial", command=lambda: self.ativa_frame("PaginaTutorial"))#nadal
+            menu_ajuda.add_command(label="Sobre", command=self.sobre)            
+
             barra_menu.add_cascade(label = "Ajuda", menu = menu_ajuda)
 
             tk.Tk.config(self, menu=barra_menu)
@@ -722,13 +746,8 @@ class Gui(tk.Tk):
             janela.destroy()
 
         
-        self.controlador.busca_bds()
-        
-##        print("self.controlador.bancos -> ", self.controlador.bancos)
-        
+        self.controlador.busca_bds()        
         self.controlador.bancos.remove(NOME_BANCO)
-        
-##        print("self.controlador.bancos 2 -> ", self.controlador.bancos)
 
         if not self.controlador.bancos:
             tk.messagebox.showinfo(title="Aviso",  message="Só há um BD no sistema, não sendo possível deletá-lo pois está em uso. Crie um novo BD e tente novamente.")
@@ -754,7 +773,7 @@ class Gui(tk.Tk):
         botao1 = tk.Button(janela, text = "Confirmar", width = 15, command = confirmar, bg='green',fg='white')
         botao1.pack()
         
-        botao2 = tk.Button(janela, text = "Sairl", width = 10, command = janela.destroy, bg='brown',fg='white')
+        botao2 = tk.Button(janela, text = "Sair", width = 10, command = janela.destroy, bg='brown',fg='white')
         botao2.pack()
         
         tk.mainloop()       
