@@ -22,23 +22,39 @@ class ControladorCli:
 
 
     def cli(self):
+        def escolha_tabela():
+            tabelas = bd.verifica_tabelas()
+            tabelas = [x[0] for x in tabelas]
+
+            if len(tabelas) > 1:##oferece escolhas
+                print("blim")
+                temporada = self.visao.escolhe_temporada(tabelas).replace("temporada_", "")
+
+            elif len(tabelas) == 1:#soh tem uma, escolhe a primeira
+                print("karyme")
+                temporada = tabelas[0].replace("temporada_", "")
+
+            else:#bd existe mas nao tem ningas tabela
+                print("licker")
+                temporada = datetime.now().year
+
+            return temporada
+        
         self.visao = Cli(self.bancos)
         nome_bd, temporada = self.visao.escolhe_banco()
 
-        try:##verif de excessao em conexao com banco tem q ser na classe do banco, nao?
-            if nome_bd in self.bancos:
-                bd = BD(self.diretorio + nome_bd)## aki tem q descobrir nome da tabela do bd.. ex, se tenho bd bruno com uma unica tabela chamada vitiligo, qndo for pro construtor do jeito q ta vai criar uma tab vazia chamada 2020, pois eh parametro do construtor!!!!!!! dai vitiliga neh cumpadi
-            else:
-                bd = BD(self.diretorio + nome_bd, temporada)
-                
-        except Exception as e:
-            print(f"\nErro fatal na conexão com o BD '{nome_bd}'!\n\n")
-            print(e)
-            quit()
-
+        bd = BD(self.diretorio + nome_bd)
+        
+        if temporada == 0:
+            print("temporada = 0")
+            temporada = escolha_tabela()
+            
+        bd.define_tabela(temporada)
+  
         while True:
             escolha_menu, parametro = self.visao.menu(nome_bd, bd.tabela)
             if "Sair" in escolha_menu:
+                bd.encerra()
                 quit()
 
             elif "Consultar outras estatísticas" in escolha_menu:
@@ -59,7 +75,11 @@ class ControladorCli:
                     bd.encerra()
                     bd = BD(self.diretorio + escolha)
                     nome_bd = escolha
-                    temporada = datetime.now().year
+
+                    
+                    temporada = escolha_tabela()
+                    bd.define_tabela(temporada)
+##                    temporada = datetime.now().year
                 
             elif "Deletar BD" in escolha_menu:
                 self.busca_bds()
@@ -106,12 +126,12 @@ class ControladorCli:
                     if parametro < placar_min:
                         tipo = "novo mínimo"
                         quebra_min += 1
-                        print("Um novo placar mínimo na temporada foi registrado!")
+                        print("Um novo placar mínimo foi registrado na temporada!")
                         
                     elif parametro > placar_max:
                         tipo = "novo máximo"
                         quebra_max += 1                        
-                        print("Um novo placar máximo na temporada foi registrado!")
+                        print("Um novo placar máximo foi registrado na temporada!")
 
                     bd.adiciona_placar([parametro, placar_min, placar_max, quebra_min, quebra_max], tipo)
 

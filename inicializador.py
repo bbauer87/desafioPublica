@@ -24,6 +24,9 @@ if argv[1] == "CLI":
 else:
     from gui import Gui
     app = Gui()    
-    app.geometry("480x640")
+    app.geometry("980x640")
+    app.after(1000, interface.atualiza_nomes)
+    
     app.mainloop()
+    app.fim()
         

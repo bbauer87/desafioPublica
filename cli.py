@@ -1,9 +1,17 @@
 from tabulate import tabulate
-
+from pathvalidate import is_valid_filename
 
 class Cli:
     def __init__(self, bancos):
         self.bancos = bancos[:]#precisa do [:]?
+
+
+    def escolhe_temporada(self, lista):
+        print(f"\nO BD escolhido tem {len(lista)} temporadas. Escolha uma:\n")
+
+        self.lista_opcoes(lista)
+
+        return lista[self.entrada_int(len(lista)) - 1]
 
 
     def escolhe_banco(self):
@@ -19,30 +27,33 @@ class Cli:
             nome_bd = self.bancos[self.entrada_int(len(self.bancos)) - 1]
             if "Criar um novo BD" in nome_bd:
                 print("\nDigite um nome para criarmos o BD:\n")
-                nome_bd = self.entrada_str() + ".db"
+                nome_bd = self.entrada_str()
                 print("\nAgora digite um valor inteiro positivo para numerar a temporada (limite 10000):\n")
-                temporada = self.entrada_int(10000)             
+                temporada = self.entrada_int(10000)
 
         else:
             print("\nNão foi localizado nenhum banco de dados. Insira um nome para criarmos o BD:\n")
-            nome_bd = self.entrada_str() + ".db"
+            nome_bd = self.entrada_str()
             print("\nAgora digite um valor inteiro positivo para numerar a temporada (limite 10000):\n")
             temporada = self.entrada_int(10000)
 
         return nome_bd, temporada
 
 
-    def entrada_str(self):##usar https://pypi.org/project/pathvalidate/ no futuro
+    def entrada_str(self):
         while True:
             print("\n" + "-" * 100 + "\n")  
             resposta = input("\n>>> ")    
             if not resposta:
                 print("\nDigite algo!!\n")
-                continue            
+                continue
+            if not is_valid_filename(resposta):
+                print("\nNão é possível usar os seguites caracteres: :, *, /, \", ?, >, |, <, \\. Tente novamente!\n")
+                continue
             break
             
         print("\n" + "-" * 100 + "\n")
-        return resposta ## se pá coloque ' + ".db"' aqui e retire estes da fun escolhe_banco
+        return resposta + ".db"
 
         
     def entrada_int(self, limite):

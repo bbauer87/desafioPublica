@@ -1,17 +1,32 @@
 import sqlite3
-from datetime import datetime
+##from datetime import datetime
 
 class BD:
-    def __init__(self, caminho_banco, temporada = datetime.now().year):
-        self.conexao = sqlite3.connect(caminho_banco)
-        self.cursor = self.conexao.cursor()
+    def __init__(self, caminho_banco):#, temporada = datetime.now().year):
+
+        try:
+            self.conexao = sqlite3.connect(caminho_banco)
+            self.cursor = self.conexao.cursor()
+
+            print("Conexão realizada em ", caminho_banco)
+
+        except Exception as e:
+            print(f"\nErro fatal na conexão com o BD '{nome_bd}'!\n\n")
+            print(e)
+            quit()
+
+
+    def define_tabela(self, temporada):#criar test unit
         self.tabela = f"temporada_{temporada}"
+
+        print(f"definida tabela {self.tabela}")
 
         try:
             self.cursor.execute(f"SELECT * FROM {self.tabela}")
 
         except sqlite3.OperationalError:
             self.cria_tabela()
+
 
     def cria_tabela(self):        
         self.cursor.execute(f"""CREATE TABLE IF NOT EXISTS {self.tabela} (
