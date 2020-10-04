@@ -1,12 +1,37 @@
+__author__ = "Bruno Silveira Bauer"
+__version__ = "1.0.1"
+
 from tabulate import tabulate
 from pathvalidate import is_valid_filename
 
+
+
 class Cli:
+    '''
+    Classe que atua como visão quando o programa é inicializado em linha de comando.
+    '''
+    
     def __init__(self, bancos):
-        self.bancos = bancos[:]#precisa do [:]?
+        '''
+        Parâmetro:
+        ----------
+        bancos : list
+            Lista de bancos de dados localizados no diretório do programa.
+        '''
+
+        self.bancos = bancos[:]
 
 
     def escolhe_temporada(self, lista):
+        '''
+        Método que escolhe uma temporada
+        
+        Parâmetro:
+        ----------
+        lista : list
+            Lista de temporadas localizadas em um BD.
+        '''
+
         print(f"\nO BD escolhido tem {len(lista)} temporadas. Escolha uma:\n")
 
         self.lista_opcoes(lista)
@@ -15,6 +40,15 @@ class Cli:
 
 
     def escolhe_banco(self):
+        '''
+        Método em que usuário cria ou escolhe um BD.
+
+        Retorna o nome do BD escolhido bem como a variável "temporada", que pode
+        ou ser setada pelo usuário ou pode ser um valor inválido, que indicará
+        ao controlador_cli.py que deve ser executada uma busca por temporadas no
+        BD escolhido.
+        '''
+
         temporada = 0
         
         if self.bancos:
@@ -41,6 +75,13 @@ class Cli:
 
 
     def entrada_str(self):
+        '''
+        Método em que usuário efetua uma entrada cujo retorno será uma string.
+
+        Possui consistência ao verificar se foi utilizado algum caracter inválido
+        utilizando-se da biblioteca pathvalidate.
+        '''
+
         while True:
             print("\n" + "-" * 100 + "\n")  
             resposta = input("\n>>> ")    
@@ -57,6 +98,13 @@ class Cli:
 
         
     def entrada_int(self, limite):
+        '''
+        Método em que usuário efetua uma entrada cujo retorno será um int.
+
+        Possui consistência ao verificar caracter inválido e se o placar a adicionar
+        está dentro dos limites estabelecidos pelo enunciado do desafio.
+        '''
+        
         while True:
             print("\n" + "-" * 100 + "\n")            
             resposta = input("\n>>> ")
@@ -70,16 +118,50 @@ class Cli:
 
 
     def lista_opcoes(self, lista):
+        '''
+        Método que imprime com numeração o parâmetro "lista".
+        
+        Parâmetro:
+        ----------
+        lista : list
+            Lista com os itens a serem impressos com numeração.
+        '''
+        
         for x, y in enumerate(lista):
             print(f" [{x + 1}] - {y}")
 
 
     def consultar_tabela(self, itens, colunas):
+        '''
+        Método que utiliza a biblioteca "tabulate" para imprimir a tabela de
+        maneira organizada.
+
+        Parâmetros:
+        ----------
+        itens : list
+            Lista com os dados de cada linha.
+
+        colunas : list
+            Lista com os nomes das colunas da tabela.
+        '''
+        
         print(tabulate(itens, colunas, numalign = "center", tablefmt = "grid"))
         print("\n\n")
 
 
     def verif_tabela_existente(self, lista):
+        '''
+        Método responsável por verificar se usuário inseriu uma numeração de
+        temporada que já exista.
+
+        Retorna "False" caso já exista ou o número da temporada caso contrário.
+
+        Parâmetros:
+        ----------
+        lista : list
+            Lista com as temporadas do BD.
+        '''
+        
         if "Criar nova temporada" in lista:
             lista.remove("Criar nova temporada")
 
@@ -91,7 +173,23 @@ class Cli:
         return temporada
         
 
-    def alterar_temporada(self, lista, tabela_atual):        
+    def alterar_temporada(self, lista, tabela_atual):   
+        '''
+        Método responsável por alterar e criar uma temporada ativa no sistema.
+
+        Retorna a escolha do usuário (criar ou alterar a temporada) e a temporada
+        escolhida ou o parâmetro "Abortar", indicando ao controlador que não será
+        alterada a temporada.
+
+        Parâmetros:
+        ----------
+        lista : list
+            Lista com as temporadas do BD.
+
+        tabela_atual : str
+            Nome da temporada atual.
+        '''
+             
         temporada = 0
         opcoes = [x[0] for x in lista]        
         opcoes.remove(tabela_atual)
@@ -146,7 +244,23 @@ class Cli:
         return escolha, temporada
 
 
-    def deletar_temporada(self, lista, tabela_atual):        
+    def deletar_temporada(self, lista, tabela_atual):   
+        '''
+        Método responsável por deletar uma temporada no sistema.
+        Se o BD tiver apenas uma temporada, o sistema impede o usuário
+        de deletá-la.
+
+        Retorna a escolha do usuário se realmente deleta ou não a temporada.
+
+        Parâmetros:
+        ----------
+        lista : list
+            Lista com as temporadas do BD.
+
+        tabela_atual : str
+            Nome da temporada atual.
+        '''
+        
         lista = [x[0] for x in lista]
         lista.remove(tabela_atual)
         
@@ -177,6 +291,23 @@ class Cli:
 
 
     def opcoes_BD(self, lista_ou_str, tipo):
+        '''
+        Método responsável por alterar ou deletar um BD.
+
+        Retorna a escolha do usuário se realmente deleta ou não o BD.
+        Caso haja apenas um BD no diretório, o programa impede o usuário
+        de deletá-lo.
+
+        Parâmetros:
+        ----------
+        lista_ou_str : list ou str
+            Lista com os BDs localizados no diretório ou uma string
+            "abortar".
+
+        tipo : str
+            Nome da função a ser executada: alterar ou deletar BD.
+        '''
+        
         if type(lista_ou_str) == list:
             lista_ou_str.append("Sair")
         
@@ -216,10 +347,26 @@ class Cli:
                     print("\nNão foi deletado nenhum BD...\n")
 
         return escolha
-
-        
+       
 
     def menu(self, nome_bd, tabela):
+        '''
+        Método que imprime um menu com opções para o usuário.
+
+        Retorna ao controlador a escolha do usuário bem como um eventual
+        parâmetro, como nos casos de adicionar placar ou ao deletar uma
+        temporada.
+
+        Parâmetros:
+        ----------
+        nome_bd : str
+            Nome do BD em uso, pois será impresso no topo do menu.
+
+        tabela : str
+            Nome da temporada em uso, que também será impressa no menu.
+
+        '''
+        
         print(f"\nREGISTRO DE PONTUAÇÕES - BD: {nome_bd} - {tabela.upper().replace('_', ' ')}:\n\n")
 
         opcoes = ["Consultar estatísticas",
@@ -263,12 +410,5 @@ class Cli:
         else:
             print(f"\n\nINTERFACE PARA {escolha.upper()}...\n\n")
 
-                   
-        
 
         return escolha, parametro
-
-
-
-
-

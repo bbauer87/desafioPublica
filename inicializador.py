@@ -1,11 +1,4 @@
-
-
-
 from sys import argv
-
-
-
-
 
 
 try:

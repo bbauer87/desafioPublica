@@ -1,106 +1,66 @@
 import tkinter as tk
 from tkinter import ttk
-
 from PIL import Image, ImageTk
-
-from datetime import datetime
-
-
-from pathvalidate import is_valid_filename
-
-from controlador_gui import ControladorGui
 
 import matplotlib
 matplotlib.use("Agg")
-##matplotlib.use("TkAgg")
-
-
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
 from matplotlib.figure import Figure
 from matplotlib import style
-
-from matplotlib import pyplot as plt
-
-
 style.use('ggplot')
 
-LARGE_FONT = ("Verdana", 12)
+from datetime import datetime
+from pathvalidate import is_valid_filename
+from controlador_gui import ControladorGui
+
+
 
 NOME_BANCO = NOME_TABELA = None
-
 ICONE = ".\\Misc\\ball.ico"
 
-
-def tutorial():
-
-    def page2():
-        tut.destroy()
-        tut2 = tk.Tk()
-
-        def page3():
-            tut2.destroy()
-            tut3 = tk.Tk()
-
-            tut3.wm_title("Part 3!")
-
-            label = ttk.Label(tut3, text="Part 3", font=NORM_FONT)
-            label.pack(side="top", fill="x", pady=10)
-            B1 = ttk.Button(tut3, text="Done!", command= tut3.destroy)
-            B1.pack()
-            tut3.mainloop()
-
-
-
-        tut2.wm_title("Part 2!")
-        label = ttk.Label(tut2, text="Part 2", font=NORM_FONT)
-        label.pack(side="top", fill="x", pady=10)
-        B1 = ttk.Button(tut2, text="Next", command= page3)
-        B1.pack()
-        tut2.mainloop()
-
-    tut = tk.Tk()
-    tut.wm_title("Tutorial")
-    label = ttk.Label(tut, text="What do you need help with?", font=NORM_FONT)
-    label.pack(side="top", fill="x", pady=10)
-
-    B1 = ttk.Button(tut, text = "Overview of the application", command=page2)
-    B1.pack()
-
-    B2 = ttk.Button(tut, text = "How do I trade with this client?", command=lambda:popupmsg("Not yet completed"))
-    B2.pack()
-
-    B3 = ttk.Button(tut, text = "Indicator Questions/Help", command=lambda:popupmsg("Not yet completed"))
-    B3.pack()
-
-    tut.mainloop()
-
-
-
-
-
-
-##def add_jogo():
-##    janela = tk.Tk()
-##    janela.iconbitmap(self, ICONE)
-##    janela.wm_title("Vitiligos?")
 ##
-##    msg = ttk.Label(janela, text="Soltei um peido marotáço!")
-##    msg.pack(side = "top", fill = "x", pady = 10)
-##    entrada = ttk.Entry(janela)
-##    entrada.insert(0, "1 a 999")
-##    entrada.pack()
-##    botao = ttk.Button(janela, text = "Sairley", width = 10, command = janela.destroy)
-##    botao.pack()
+##def tutorial():
 ##
-##    entrada.focus_force()      
-##    tk.mainloop()
-
-
-
-
-
-
-
+##    def page2():
+##        tut.destroy()
+##        tut2 = tk.Tk()
+##
+##        def page3():
+##            tut2.destroy()
+##            tut3 = tk.Tk()
+##
+##            tut3.wm_title("Part 3!")
+##
+##            label = ttk.Label(tut3, text="Part 3", font=NORM_FONT)
+##            label.pack(side="top", fill="x", pady=10)
+##            B1 = ttk.Button(tut3, text="Done!", command= tut3.destroy)
+##            B1.pack()
+##            tut3.mainloop()
+##
+##
+##
+##        tut2.wm_title("Part 2!")
+##        label = ttk.Label(tut2, text="Part 2", font=NORM_FONT)
+##        label.pack(side="top", fill="x", pady=10)
+##        B1 = ttk.Button(tut2, text="Next", command= page3)
+##        B1.pack()
+##        tut2.mainloop()
+##
+##    tut = tk.Tk()
+##    tut.wm_title("Tutorial")
+##    label = ttk.Label(tut, text="What do you need help with?", font=NORM_FONT)
+##    label.pack(side="top", fill="x", pady=10)
+##
+##    B1 = ttk.Button(tut, text = "Overview of the application", command=page2)
+##    B1.pack()
+##
+##    B2 = ttk.Button(tut, text = "How do I trade with this client?", command=lambda:popupmsg("Not yet completed"))
+##    B2.pack()
+##
+##    B3 = ttk.Button(tut, text = "Indicator Questions/Help", command=lambda:popupmsg("Not yet completed"))
+##    B3.pack()
+##
+##    tut.mainloop()
 
 
 
@@ -109,8 +69,140 @@ def sobre():
     pass
 
 
-        
-        
+
+
+ 
+##class PaginaTutorial(tk.Frame):
+##
+##    def __init__(self, parent, controller):
+##        tk.Frame.__init__(self, parent)
+##
+##        container1 = tk.LabelFrame(self)
+##        container1.pack(side = "left", fill = "y", expand = True)
+##
+##        #msg dizendo TUTORIAIS:
+##
+##        botao1 = ttk.Button(container1, text="Como adicionar um jogo?", command= lambda: self.imprime("add jogo"))
+##        botao1.pack(padx=10, pady=10)
+##        
+##        botao2 = ttk.Button(container1, text="Como visualizar as tabelas?",command=  lambda: self.imprime("tabelas"))
+##        botao2.pack(padx=10, pady=10)
+##        
+##        botao3 = ttk.Button(container1, text="Como visualizar o gráfico?", command= lambda: self.imprime("gráfico"))
+##        botao3.pack(padx=10, pady=10)
+##        
+##        botao4 = ttk.Button(container1, text="Como alterar, criar ou deletar\numa temporada?", command= lambda: self.imprime("temporadas"))
+##        botao4.pack(padx=10, pady=10)
+##        
+##        botao5 = ttk.Button(container1, text="Como alterar, criar ou deletar\num banco de dados?", command= lambda: self.imprime("bancos"))
+##        botao5.pack(padx=10, pady=10)
+##        
+##        botao6 = tk.Button(container1, text="Sair", command=lambda: controller.ativa_frame("PaginaInicial"), bg='brown',fg='white')
+##        botao6.pack(padx=10, pady=30)
+##
+##        container2 = tk.LabelFrame(self)
+##        container2.pack(side = "right", fill = "y", expand = True)
+##
+##        self.msg = ttk.Label(container2, text="Escolha uma opção de tutorial...")
+##        self.msg.pack()
+##
+##
+##    def imprime(self, opcao):
+####        self.msg["text"] = ""
+##
+##        if "add" in opcao:
+##            self.msg["text"] = """
+##
+##Para adicionar um jogo, vá até o menu Arquivo -> Adicionar um jogo 
+##ou clique em Adicionar placar na tela inicial.
+##
+##Em seguida, insira um número de 1 a 999 na janela que será aberta."""
+##
+##        elif "tabelas" in opcao:
+##            self.msg["text"] = """
+##Para visualizar as tabelas, vá até o menu Estatísticas -> Consultar 
+##tabelas ou clique em Tabelas na tela inicial.
+##
+##A tela mudará de aparência e então deve-se clicar no botão "Busca 
+##tabela", o qual atualizará a interface com os dados do BD.
+##
+##Caso a tabela não tenha nenhum jogo inserido, nenhum dado será 
+##mostrado."""
+##            
+##        elif "gráfico" in opcao:
+##            self.msg["text"] = """
+##Para visualizar um gráfico com base nos dados da temporada, vá até o 
+##menu Estatísticas -> Consultar gráfico ou clique em Gráfico na tela 
+##inicial.
+##
+##A tela mudará de aparência e então deve-se clicar no botão "Gerar 
+##gráfico". A tabela deverá conter pelo dois jogos pois do contrário o 
+##gráfico aparentará ter gerado erro.
+##
+##Com o gráfico gerado, aparecerá na tela sete ícones, os quais da 
+##esquerda pra direita oferecem as seguintes opções:
+##
+##  1 - Retorna a visão original do gráfico;
+##  2 - Visão anterior do gráfico;
+##  3 - Próxima visão do gráfico;
+##  4 - Navega pelo gráfico com o botão esquerdo do mouse, enquanto que o botão
+##  direito permite zoom;
+##  5 - Ativa o zoom conforme se "desenha" um retângulo com o botão 
+##  esquerdo do mouse pressionado;
+##  6 - Oferece opções de configurações do gráfico, como altura dos 
+##  eixos, distância das colunas, etc;
+##  7 - Permite salvar uma imagem do gráfico gerado."""
+##            
+##        elif "temporadas" in opcao:
+##            self.msg["text"] = """
+##Para alterar ou criar uma temporada, vá até o menu Arquivo -> 
+##Alterar/Criar temporada ou clique em Alterar/Criar no campo 
+##Temporadas da tela inicial.
+##
+##Será aberta uma nova janela onde primeiro deve-se escolher um dos 
+##botões: "temporadas localizadas" ou "criar temporada".
+##
+##Para alterar a temporada, clique no respectivo botão e depois clique 
+##em "Buscar temporadas". Caso a lista não esteja vazia, escolha uma 
+##das opções e clique em Confirmar.
+##
+##Para criar uma temporada, clique no respectivo botão e então digite 
+##um valor para numerar a temporada (de 1 a 10000), e clique em 
+##Confirmar.
+##
+##
+##Para deletar uma temporada, vá até o menu Arquivo -> Deletar 
+##temporada ou clique em Deletar no campo Temporadas da tela inicial.
+##
+##Será aberta uma nova janela caso o BD atual tenha mais de uma 
+##temporada. Deve-se então escolher na lista uma temporada e clicar em 
+##Confirmar."""
+##            
+##        else:
+##            self.msg["text"] = """
+##Para alterar ou criar um banco de dados, vá até o menu Arquivo -> 
+##Alterar/Criar banco de dados ou então clique em Alterar/Criar no 
+##campo Banco de Dados da tela inicial.
+##
+##Será aberta uma nova janela onde primeiro deve-se escolher um dos 
+##botões: "Escolher BD" ou "Criar BD".
+##
+##Para alterar o BD, clique no respectivo botão e depois clique em 
+##"Buscar BDs". Caso a lista não esteja vazia, escolha uma das opções 
+##e clique em Confirmar.
+##
+##Para criar um BD, clique no respectivo botão e então digite um nome 
+##e em seguida um valor para numerar a temporada (de 1 a 10000), e 
+##então clique em Confirmar.
+##
+##
+##Para deletar um BD, vá até o menu Arquivo -> Deletar 
+##banco de dados ou clique em Deletar no campo Banco de Dados na tela inicial.
+##
+##Será aberta uma nova janela caso o diretório tenha mais de um 
+##BD. Deve-se então escolher na lista um banco e clicar em 
+##Confirmar."""
+
 
 
 
@@ -121,7 +213,6 @@ class Gui(tk.Tk):
         
         self.controlador = ControladorGui()
 
-        #########################
         def confirmar(tipo, param = ""):
             global NOME_BANCO
             global NOME_TABELA
@@ -138,12 +229,9 @@ class Gui(tk.Tk):
             elif tipo == "iniciar o programa":                
                 NOME_BANCO = "Testes.db"
                 NOME_TABELA = str(datetime.now().year)
-                self.controlador.tabela("escolhe", NOME_TABELA)
-                
+                self.controlador.tabela("escolhe", NOME_TABELA)                
                 
             janela.destroy()
-        ########################
-
         
         if "criar" in tipo:
             janela = tk.Tk()
@@ -165,31 +253,28 @@ class Gui(tk.Tk):
             janela = tk.Tk()
             janela.wm_title("Banco de dados")            
             janela.iconbitmap(self, ICONE)
-
-            msg = ttk.Label(janela, text="Escolha um BD:")
-            msg.pack(side="top")
+            janela.grid_rowconfigure(0, weight=1)
+            janela.grid_columnconfigure(0, weight=1)
+            
+            msg = ttk.Label(janela, text="Escolha um banco de dados:")
+            msg.grid(row=0, column=0, padx=10, pady=10)
 
             listagem = tk.Listbox(janela, selectmode=tk.SINGLE)
-            listagem.pack(side="left")
+            listagem.grid(row=1, column=0, rowspan=2, columnspan=2, padx=5, pady=5)
 
             for item in self.controlador.bancos:
                 listagem.insert(tk.END, item)
                 
-            listagem.selection_set(first=0)##tem q ser dps q inseriu os itens, neh, cumpadi.. agora funfa
-
+            listagem.selection_set(first=0)
                     
-            botao1 = tk.Button(janela, text = "Confirmar", width = 15, command =lambda: confirmar("banco", listagem.get(listagem.curselection())), bg='green',fg='white')
-            botao1.pack()
+            botao1 = tk.Button(janela, text = "Confirmar", command =lambda: confirmar("banco", listagem.get(listagem.curselection())), bg='green',fg='white')
+            botao1.grid(row=2, column=4, padx=15, pady=15)
             
-            botao2 = tk.Button(janela, text = "Sair", width = 10, command = janela.destroy, bg='brown',fg='white')
-            botao2.pack()
+            botao2 = tk.Button(janela, text = "Sair", command = janela.destroy, bg='brown',fg='white')
+            botao2.grid(row=2, column=5, padx=15, pady=15)
 
-
-            janela.geometry("480x206")
             tk.mainloop()
 
-
-        ################################dps de conectar com banco tem q escolher uma temporada caso mais de uma tabela no bd
         try:
             tabelas = self.controlador.tabela("consulta")
 
@@ -214,12 +299,14 @@ class Gui(tk.Tk):
             janela = tk.Tk()
             janela.wm_title("Temporadas")
             janela.iconbitmap(self, ICONE)
+            janela.grid_rowconfigure(0, weight=1)
+            janela.grid_columnconfigure(0, weight=1)
 
             msg = ttk.Label(janela, text="Escolha uma temporada:")
-            msg.pack(side="top")
+            msg.grid(row=0, column=0, padx=10, pady=10)
 
             listagem = tk.Listbox(janela, selectmode=tk.SINGLE)
-            listagem.pack(side="left")
+            listagem.grid(row=1, column=0, rowspan=2, columnspan=2, padx=5, pady=5)
 
             for item in tabelas:
                 listagem.insert(tk.END, item)
@@ -227,9 +314,8 @@ class Gui(tk.Tk):
             listagem.selection_set(first=0)
                     
             botao1 = tk.Button(janela, text = "Confirmar", width = 15, command =lambda: confirmar("tabela", listagem.get(listagem.curselection())), bg='green',fg='white')
-            botao1.pack()
-            
-            janela.geometry("480x206")
+            botao1.grid(row=2, column=4, padx=15, pady=15)
+
             tk.mainloop()
 
 
@@ -241,7 +327,321 @@ class Gui(tk.Tk):
         tk.Tk.wm_title(self, f"Registro de pontuação  |  Conectado em: {NOME_BANCO}")
         self.after(5000, self.atualiza_nomes)
 
+
+    def janela_temporada(self):
         
+        def escolhas(param):
+            if param == "criar":
+                self.listagem.configure(background = "gray", state=tk.DISABLED)            
+                self.entrada1.configure(state=tk.NORMAL)
+
+            else:          
+                self.listagem.configure(background = "white", state=tk.NORMAL)            
+                self.entrada1.configure(state=tk.DISABLED)
+
+            self.botao_escolhido.set(param)
+
+        def buscar(param):
+            self.temporadas, self.temp_atual = param
+
+            
+    ##        self.botao_escolhido.set("localizar")
+    ##        self.botao_rad_1.invoke()
+
+            if self.primeiravez:
+                self.primeiravez = False
+
+            else:
+                self.listagem.delete(0, 'end')
+            
+            for item in self.temporadas:
+                self.listagem.insert(tk.END, item)
+
+            self.listagem.selection_set(first=0)##tem q ser dps q inseriu os itens, neh, cumpadi.. agora funfa
+
+        def verif_tabela_existente(lista, entrada, temp_atual):
+            if entrada == temp_atual.replace("temporada_", ""):
+                return False
+
+            for x in lista:
+                print("x ", x)
+                if entrada == x.replace("temporada_", ""):
+                    return False
+
+            return entrada
+
+        def confirmar():
+            global NOME_TABELA
+            
+            validar = True
+
+            msg = "Erro!\n"
+            
+            if self.botao_escolhido.get() == "criar":
+                try:
+                    numero = int(self.entrada1.get())
+                    if numero < 1 or numero > 10_000:
+                        print("erro 1")
+                        msg += "O número da temporada deve estar entre 1 e 10.000. Tente novamente!"
+                        raise Exception
+
+                    verif = verif_tabela_existente(self.temporadas, self.entrada1.get(), self.temp_atual)
+
+                    if not verif:
+                        print("erro 2")
+                        msg += "Não foi possível criar essa temporada pois a numeração escolhida já consta no BD."
+                        raise Exception
+
+                except ValueError:
+                    tk.messagebox.showinfo(title="ERROU!!!",  message="Valor inválido na numeração da temporada!")
+                    janela.focus_force()
+
+                except Exception:
+                    tk.messagebox.showinfo(title="ERROU!!!",  message=msg)
+                    janela.focus_force()
+
+                else:
+                    tk.messagebox.showinfo(title="Testes criar",  message=f"Criar temporada de número {self.entrada1.get()}")
+                    
+                    self.controlador.altera_cria_temp("criação", self.entrada1.get())
+                    NOME_TABELA = self.entrada1.get()
+
+                    print("apos criar temporada _>", NOME_TABELA)#deletar
+                    
+                    validar = True
+                    
+                    tk.messagebox.showinfo(title="Sucesso!",  message=f"Temporada {self.entrada1.get()} criada com sucesso!")
+
+            else:
+                try:
+                    tk.messagebox.showinfo(title="Testes localizar",  message=f"Alterar temporada para {self.listagem.get(self.listagem.curselection())}")
+
+                    self.controlador.altera_cria_temp("alterar", self.listagem.get(self.listagem.curselection()))
+                    
+                    NOME_TABELA = self.listagem.get(self.listagem.curselection()).replace("temporada_", "")
+
+                    print("apos alterar nome tabela", NOME_TABELA)#deletar
+
+                    validar = True
+
+                    tk.messagebox.showinfo(title="Sucesso!",  message=f"Alteração com sucesso para temporada {NOME_TABELA}!")
+
+                except:
+                    pass
+
+            if validar:
+                self.botao_buscar.invoke()
+                janela.destroy() 
+
+        janela = tk.Tk()
+        janela.iconbitmap(janela, ICONE)
+        janela.wm_title("Opções em temporadas")
+        janela.grid_rowconfigure(0, weight=1)
+        janela.grid_columnconfigure(0, weight=1)
+
+        self.botao_escolhido = tk.StringVar()
+        self.botao_escolhido.set("criar")
+
+        self.botao_rad_1 = ttk.Radiobutton(janela, text = "Temporadas localizadas",
+                                 variable = self.botao_escolhido, value = "localizar", command= lambda: escolhas("localizar"))
+        self.botao_rad_1.grid(row = 1, column = 0, pady = 10)
+        
+        self.botao_rad_2 = ttk.Radiobutton(janela, text = "Criar temporada",
+                                 variable = self.botao_escolhido, value = "criar", command= lambda: escolhas("criar"))
+        self.botao_rad_2.grid(row = 1, column = 4, pady = 10)
+
+        self.listagem = tk.Listbox(janela, selectmode=tk.SINGLE)
+        self.listagem.configure(background = "gray")
+        self.listagem.configure(disabledforeground = "black")
+        self.listagem.grid(columnspan = 2, row = 2, rowspan = 4, padx = 10, pady = 10)
+
+        sep1 = ttk.Separator(janela)
+        sep1.configure(orient = "vertical")
+        sep1.grid(row = 1, column = 2, rowspan = 5, sticky = "ns")
+
+        msg1 = tk.Label(janela, text = "Temporada:")
+        msg1.grid(row = 3, column = 3)
+
+        self.entrada1 = ttk.Entry(janela)
+        self.entrada1.insert(0, "1 a 10000")
+        self.entrada1.grid(row = 3, column = 4, padx = 5)
+            
+        sep2 = ttk.Separator(janela)
+        sep2.configure(orient = "horizontal")
+        sep2.grid(row = 6, column = 0, columnspan = 6, sticky = "we")
+
+        self.botao_buscar = tk.Button(janela, text = "Buscar temporadas", command= lambda: buscar(self.controlador.altera_cria_temp("inicial")), bg='brown',fg='white')
+        self.botao_buscar.grid(row = 7, column = 0, pady = 10)
+
+
+        botao1 = tk.Button(janela, text = "Sair", command = janela.destroy, bg='brown',fg='white')
+        botao1.grid(row = 7, column = 3, pady = 10, padx = 30)
+
+        botao2 = tk.Button(janela, text = "Confirmar", command = confirmar, bg='green',fg='white')
+        botao2.grid(row = 7, column = 4, pady = 10)
+
+        self.primeiravez = True
+        
+        self.botao_escolhido.set("localizar")
+        self.botao_buscar.invoke()
+        self.botao_escolhido.set("criar")
+        self.botao_rad_2.invoke()
+
+        tk.mainloop()
+
+
+    def janela_banco(self):
+
+        def escolhas(param):
+            if param == "criar":#bloqueia listagem
+                self.listagem.configure(background = "gray", state=tk.DISABLED)
+                
+                self.entrada1.configure(state=tk.NORMAL)
+                self.entrada2.configure(state=tk.NORMAL)
+
+            else:#bloqeia campos criar bd
+                self.listagem.configure(background = "white", state=tk.NORMAL)
+                
+                self.entrada1.configure(state=tk.DISABLED)
+                self.entrada2.configure(state=tk.DISABLED)
+
+
+            self.botao_escolhido.set(param)
+
+        def buscar():
+            self.controlador.busca_bds()
+
+
+            self.controlador.bancos.remove(NOME_BANCO)
+            
+##            self.botao_escolhido.set("localizar")
+##            self.botao_rad_1.invoke()
+
+            if self.primeiravez:
+                self.primeiravez = False
+
+            else:
+                self.listagem.delete(0, 'end')
+            
+            for item in self.controlador.bancos:
+                self.listagem.insert(tk.END, item)
+
+            self.listagem.selection_set(first=0)##tem q ser dps q inseriu os itens, neh, cumpadi.. agora funfa
+
+
+        def confirmar():
+            global NOME_BANCO
+            global NOME_TABELA
+            
+            validacao = False
+            
+            if self.botao_escolhido.get() == "criar":
+                self.controlador.busca_bds()
+
+                try:
+                    if not is_valid_filename(self.entrada1.get()) or self.entrada1.get() + ".db" in self.controlador.bancos:
+                        raise Exception
+                        
+                    numero = int(self.entrada2.get())
+                    if numero < 1 or numero > 10_000:
+                        raise Exception
+
+                except:
+                    tk.messagebox.showinfo(title="ERROU!!!",  message=f"O número da temporada deve estar entre 1 e 10.000.\n\nAlém disso, não é possível usar um nome já existente ou que contenha os seguites caracteres:\n:, *, /, \", ?, >, |, <, \\.\n\nTente novamente!")
+                    janela.focus_force()
+
+                else:
+                    tk.messagebox.showinfo(title="Testes criar",  message=f"Criar BD com nome {self.entrada1.get()} e temporada {self.entrada2.get()}")
+                    self.controlador.altera_cria_bd((self.entrada1.get() + ".db", self.entrada2.get()))
+                    NOME_BANCO = self.entrada1.get() + ".db"
+                    NOME_TABELA = self.entrada2.get()
+
+                    print(NOME_BANCO, NOME_TABELA)#deletar
+                    
+                    validacao = True
+
+            else:
+                try:
+                    tk.messagebox.showinfo(title="Testes localizar",  message=f"Alterar BD para {self.listagem.get(self.listagem.curselection())}")
+
+                    nome = self.controlador.altera_cria_bd((self.listagem.get(self.listagem.curselection()), None))
+
+                    NOME_BANCO = self.listagem.get(self.listagem.curselection())            
+                    NOME_TABELA = nome
+
+
+                    print(NOME_BANCO, NOME_TABELA)#deletar
+
+                    validacao = True
+
+                except:
+                    pass
+
+            if validacao:
+                janela.destroy() 
+
+
+        janela = tk.Tk()
+        janela.iconbitmap(janela, ICONE)
+        janela.wm_title("Opções em banco de dados")
+        janela.grid_rowconfigure(0, weight=1)
+        janela.grid_columnconfigure(0, weight=1)
+
+        self.botao_escolhido = tk.StringVar()
+        self.botao_escolhido.set("criar")
+
+        self.botao_rad_1 = ttk.Radiobutton(janela, text = "Escolher BD",
+                                           variable = self.botao_escolhido, value = "localizar", command= lambda: escolhas("localizar"))
+        self.botao_rad_1.grid(row = 1, column = 0, pady = 10)
+        
+        botao_rad_2 = ttk.Radiobutton(janela, text = "Criar BD",
+                                      variable = self.botao_escolhido, value = "criar", command=lambda: escolhas("criar"))
+        botao_rad_2.grid(row = 1, column = 4, pady = 10)
+
+        self.listagem = tk.Listbox(janela, selectmode=tk.SINGLE)
+        self.listagem.configure(background = "gray")
+        self.listagem.configure(disabledforeground = "black")
+        self.listagem.grid(columnspan = 2, row = 2, rowspan = 4, padx = 10, pady = 10)
+
+        sep1 = ttk.Separator(janela)
+        sep1.configure(orient = "vertical")
+        sep1.grid(row = 1, column = 2, rowspan = 5, sticky = "ns")
+
+        msg1 = tk.Label(janela, text = "Nome:")
+        msg1.grid(row = 3, column = 3)
+
+        self.entrada1 = ttk.Entry(janela)  
+        self.entrada1.grid(row = 3, column = 4, padx = 5)
+        
+        msg2 = tk.Label(janela, text = "Temporada:") 
+        msg2.grid(row = 4, column = 3, padx = 5)
+
+        self.entrada2 = ttk.Entry(janela)
+        self.entrada2.insert(0, "1 a 10000")
+        self.entrada2.grid(row = 4, column = 4, padx = 5)
+        
+        sep2 = ttk.Separator(janela)
+        sep2.configure(orient = "horizontal")
+        sep2.grid(row = 6, column = 0, columnspan = 6, sticky = "we")
+
+        self.botao_buscar = tk.Button(janela, text = "Buscar BDs", command= buscar, bg='blue', fg='white')
+        self.botao_buscar.grid(row = 7, column = 0, pady = 10)
+
+        botao1 = tk.Button(janela, text = "Sair", command = janela.destroy, bg='orange', fg='white')
+        botao1.grid(row = 7, column = 3, pady = 10, padx = 30)
+
+        botao2 = tk.Button(janela, text = "Confirmar", command = confirmar, bg='green', fg='white')
+        botao2.grid(row = 7, column = 4, pady = 10)
+
+        self.primeiravez = True
+        
+        self.botao_escolhido.set("localizar")
+        self.botao_buscar.invoke()
+        self.botao_escolhido.set("criar")
+        botao_rad_2.invoke()
+
+        tk.mainloop()
+
     def __init__(self, *args, **kwargs):
 
         self.controlador = ControladorGui()
@@ -254,28 +654,27 @@ class Gui(tk.Tk):
             
             
         if self.escolha != "SAIR":
-
             tk.Tk.__init__(self, *args, **kwargs)
             tk.Tk.iconbitmap(self, ICONE)
             tk.Tk.wm_title(self, f"Registro de pontuação | Conectando...")
             
             container = tk.Frame(self)
-            container.pack(side = "top", fill = "both", expand = True)
-    ##        container.grid_rowconfigure(0, weight=1)
-    ##        container.grid_columnconfigure(0, weight=1)
 
             barra_menu = tk.Menu(container)
-            menu_arquivo = tk.Menu(barra_menu, tearoff=0)#tearoff eh uma opcao doida onde tu pode destacar o menu, onde se cria uma nova doida janela
+            menu_arquivo = tk.Menu(barra_menu, tearoff=0)
 
             menu_arquivo.add_command(label="Adicionar um jogo", command=self.add_jogo)#pronto e bombamdexter
             menu_arquivo.add_separator()
             
-            menu_arquivo.add_command(label="Alterar/Criar temporada", command=lambda:self.ativa_frame("PaginaTemporadas"))#pronto e bombamdexter
+            menu_arquivo.add_command(label="Alterar/Criar temporada",
+                                     command=self.janela_temporada)#testandexter em janela
             menu_arquivo.add_command(label="Deletar temporada", command=self.del_temporada)#pronto e bombamdexter
             menu_arquivo.add_separator()
             
-            menu_arquivo.add_command(label="Alterar/Criar banco de dados", command=lambda:self.ativa_frame("PaginaEscolheCriaBanco"))#pronto soh precisa uma lev consistencia
-            menu_arquivo.add_command(label="Deletar banco de dados", command=self.del_BD)#pronto e bombamdexter
+            menu_arquivo.add_command(label="Alterar/Criar banco de dados",
+                                     command=self.janela_banco)#testandexter em janela
+            menu_arquivo.add_command(label="Deletar banco de dados",
+                                     command=self.del_BD)#pronto e bombamdexter
             menu_arquivo.add_separator()
             
             menu_arquivo.add_command(label = "Sair", command = self.destroy)
@@ -283,15 +682,17 @@ class Gui(tk.Tk):
             barra_menu.add_cascade(label = "Arquivo", menu = menu_arquivo)
 
             menu_estats = tk.Menu(barra_menu, tearoff=0)
-            menu_estats.add_command(label="Consultar gráfico", command=lambda: self.ativa_frame("PaginaGrafico"))#pronto e bombamdexter
-            menu_estats.add_command(label="Consultar tabelas", command=lambda: self.ativa_frame("PaginaTabelas"))#pronto e bombamdexter
+            menu_estats.add_command(label="Consultar gráfico",
+                                    command=lambda: self.ativa_frame("PaginaGrafico"))#pronto e bombamdexter
+            menu_estats.add_command(label="Consultar tabelas",
+                                    command=lambda: self.ativa_frame("PaginaTabelas"))#pronto e bombamdexter
             barra_menu.add_cascade(label = "Estatísticas", menu = menu_estats)
             
             menu_ajuda = tk.Menu(barra_menu, tearoff=0)
             menu_ajuda.add_command(label="Sobre", command=sobre)#nadal
             menu_ajuda.add_separator()
             
-            menu_ajuda.add_command(label="Tutorial", command=tutorial)#nadal
+##            menu_ajuda.add_command(label="Tutorial", command=lambda: self.ativa_frame("PaginaTutorial"))#nadal
             barra_menu.add_cascade(label = "Ajuda", menu = menu_ajuda)
 
             tk.Tk.config(self, menu=barra_menu)
@@ -305,8 +706,13 @@ class Gui(tk.Tk):
 
 
             self.ativa_frame("PaginaInicial")
-        
 
+        
+    def ativa_frame(self, cont):
+        frame = self.frames[cont]
+        frame.tkraise()
+        
+        
     def del_BD(self):
         def confirmar():
             pergunta = tk.messagebox.askquestion("Deletar BD", f"Tem certeza que quer deletar {listagem.get(listagem.curselection())}? Esse processo não pode ser revertido caso confirmado!", icon = "warning")
@@ -345,17 +751,13 @@ class Gui(tk.Tk):
         listagem.selection_set(first=0)##tem q ser dps q inseriu os itens, neh, cumpadi.. agora funfa
 
                 
-        botao1 = tk.Button(janela, text = "Confirmarley", width = 15, command = confirmar, bg='green',fg='white')
+        botao1 = tk.Button(janela, text = "Confirmar", width = 15, command = confirmar, bg='green',fg='white')
         botao1.pack()
         
-        botao2 = tk.Button(janela, text = "Sairley", width = 10, command = janela.destroy, bg='brown',fg='white')
+        botao2 = tk.Button(janela, text = "Sairl", width = 10, command = janela.destroy, bg='brown',fg='white')
         botao2.pack()
-
-
-##        janela.geometry("280x106")
         
-        tk.mainloop()
-        
+        tk.mainloop()       
     
 
     def del_temporada(self):
@@ -390,18 +792,13 @@ class Gui(tk.Tk):
         listagem.selection_set(first=0)##tem q ser dps q inseriu os itens, neh, cumpadi.. agora funfa
 
                 
-        botao1 = tk.Button(janela, text = "Confirmarley", width = 15, command = confirmar, bg='green',fg='white')
+        botao1 = tk.Button(janela, text = "Confirmar", width = 15, command = confirmar, bg='green',fg='white')
         botao1.pack()
         
-        botao2 = tk.Button(janela, text = "Sairley", width = 10, command = janela.destroy, bg='brown',fg='white')
+        botao2 = tk.Button(janela, text = "Sair", width = 10, command = janela.destroy, bg='brown',fg='white')
         botao2.pack()
-
-
-##        janela.geometry("280x106")
         
-        tk.mainloop()
-
-    
+        tk.mainloop()    
 
 
     def add_jogo(self):
@@ -439,69 +836,55 @@ class Gui(tk.Tk):
         msg = ttk.Label(janela, text="Insira a pontuação (1 a 999):")
         msg.grid(row = 0, column = 0)
         
-    ##    msg.grid(row = 0, column = 1, rowspan = 6, sticky = "ns")
-        
         entrada = ttk.Entry(janela)
         entrada.grid(row = 0, column = 1)
         
-        botao1 = tk.Button(janela, text = "Confirmarley", width = 15, command = lambda: recebe_resposta(entrada.get()), bg='green',fg='white')
+        botao1 = tk.Button(janela, text = "Confirmar", width = 15, command = lambda: recebe_resposta(entrada.get()), bg='green',fg='white')
         botao1.grid(row = 1, column = 0, pady=5)
 
         
-        botao2 = tk.Button(janela, text = "Sairley", width = 10, command = janela.destroy, bg='brown',fg='white')
+        botao2 = tk.Button(janela, text = "Sair", width = 10, command = janela.destroy, bg='brown',fg='white')
         botao2.grid(row = 1, column = 1, pady=5)
 
         entrada.focus_force()
         janela.geometry("280x106")
-        tk.mainloop()
-        
-        
-
-    def ativa_frame(self, cont):
-        frame = self.frames[cont]
-        frame.tkraise()
+        tk.mainloop()        
+     
 
 
-
-
-class PaginaGrafico(tk.Frame):##dps q gerou o grafico e add um placar, ele nao atualiza o graifoc.. se pah olhe nos vids do malucao lah pra ver como ele atualiza
+class PaginaGrafico(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        label = tk.Label(self, text="Graph Page!", font=LARGE_FONT)
-        label.pack(pady=10,padx=10)
+
+        container = tk.LabelFrame(self)
+        container.pack(padx=5, pady=5)
+        
+        container1 = tk.LabelFrame(container)
+        container1.pack(padx=7, pady=7, side = "left")
+        container2 = tk.LabelFrame(container)
+        container2.pack(padx=7, pady=7, side = "right")
+
+        
+        button1 = tk.Button(container1, text="Página inicial",
+                            command=lambda: controller.ativa_frame("PaginaInicial"), bg='brown',fg='white')
+        button1.pack(padx=7, pady=7)
+
+        self.button2 = tk.Button(container2, text="Gerar gráfico",
+                            command=lambda: self.gera(controller.controlador.retorna_dados()[0]), bg='green',fg='white')
+        self.button2.pack(padx=7, pady=7)
 
 
-        button1 = ttk.Button(self, text="Menu inicial",
-                            command=lambda: controller.ativa_frame("PaginaInicial"))
-        button1.pack()
-
-        self.button2 = ttk.Button(self, text="Gerar",
-                            command=lambda: self.gera(controller.controlador.retorna_dados()[0]))
-        self.button2.pack()
-
-##        self.canvas = None
-
-##        self.tabela = controller.nome_tabela
-
-
-
-    def gera(self, dados):#tah comendo uns 6 mega de memoria a cada vez q atualiza, mas pleo menos atualiza >D
+    def gera(self, dados):
         try: 
             self.canvas.get_tk_widget().pack_forget()
             self.toolbar.pack_forget()
-##            self.canvas.destroy("all")
-##            self.canvas = None
-##            self.f.clear()
-##            plt.close(self.f)
         except AttributeError: 
             pass
         
         self.button2["text"] = "Atualizar"
 
         f = Figure()
-        
-##        self.f = plt.figure()
         
         plotar = f.add_subplot(111)
         plotar.set_title(f"Pontuação temporada {NOME_TABELA}")        
@@ -512,7 +895,7 @@ class PaginaGrafico(tk.Frame):##dps q gerou o grafico e add um placar, ele nao a
         jogos = [x + 1 for x in range(len(dados))]
 
         plotar.set_xticks(jogos)            
-        plotar.plot(jogos, placares)###aki vai dados da tabela.. ex, x = nro jogo, y = placar desse jogo
+        plotar.plot(jogos, placares)
 
         self.canvas = FigureCanvasTkAgg(f, self)
         self.canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
@@ -540,8 +923,7 @@ class PaginaInicial(tk.Frame):
         container2.pack(fill = "both", padx = 10, pady = 10)
         container3.pack(fill = "both", padx = 10, pady = 10)
 
-#################
-        add_placar = ttk.Button(container1, text = "Adicionar placar",
+        add_placar = ttk.Button(container1, text = "Adicionar jogo",
                             command= controller.add_jogo)
         add_placar.pack(side="left", padx = 5, pady = 5)
         
@@ -552,25 +934,25 @@ class PaginaInicial(tk.Frame):
         grafico = ttk.Button(container1, text = "Gráfico",
                             command=lambda: controller.ativa_frame("PaginaGrafico"))
         grafico.pack(padx = 5, pady = 5)
-#################
+
 
         temporada1 = ttk.Button(container2, text = "Alterar/Criar",
-                            command=lambda: controller.ativa_frame("PaginaTemporadas"))
+                            command= controller.janela_temporada)
         temporada1.pack(padx = 5, pady = 5)
         
         temporada2 = ttk.Button(container2, text = "Deletar",
                             command= controller.del_temporada)
         temporada2.pack(padx = 5, pady = 5)
-#################
+
 
         banco1 = ttk.Button(container3, text = "Alterar/Criar",
-                            command=lambda: controller.ativa_frame("PaginaEscolheCriaBanco"))
+                            command= controller.janela_banco)
         banco1.pack(padx = 5, pady = 5)
         
         banco2 = ttk.Button(container3, text = "Deletar",
                             command= controller.del_BD)
         banco2.pack(padx = 5, pady = 5)
-#################   
+
         
         sair = tk.Button(container_botoes, text = "Sair",
                          command= controller.destroy,
@@ -585,363 +967,8 @@ class PaginaInicial(tk.Frame):
         
         painel = tk.Label(self, image = render)
         painel.image = render
-        painel.pack(side = "right")#, fill = "both", expand = "yes")
+        painel.pack(side = "right")
 
-
-
-
-        
-
-
-        
-
-
-        
-
-##        janela = tk.Tk()
-##        janela.iconbitmap(self, ICONE)
-##        janela.wm_title("Adicionar um jogo")
-##        janela.grid_rowconfigure(0, weight=1)
-##        janela.grid_columnconfigure(0, weight=1)
-##
-##        msg = ttk.Label(janela, text="Insira a pontuação (1 a 999):")
-##        msg.grid(row = 0, column = 0)
-##        
-##    ##    msg.grid(row = 0, column = 1, rowspan = 6, sticky = "ns")
-##        
-##        entrada = ttk.Entry(janela)
-##        entrada.grid(row = 0, column = 1)
-##        
-##        botao1 = tk.Button(janela, text = "Confirmarley", width = 15, command = lambda: recebe_resposta(entrada.get()), bg='green',fg='white')
-##        botao1.grid(row = 1, column = 0, pady=5)
-##
-##        
-##        botao2 = tk.Button(janela, text = "Sairley", width = 10, command = janela.destroy, bg='brown',fg='white')
-##        botao2.grid(row = 1, column = 1, pady=5)
-##
-##        entrada.focus_force()
-##        janela.geometry("280x106")
-##        tk.mainloop()
-        
-
-        
-        
-
-
-
-
-class PaginaEscolheCriaBanco(tk.Frame):
-
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        
-##        titulo = tk.Label(self, text = "Escolha uma opção:")
-##        titulo.grid(row = 0, column = 0)
-
-        self.botao_buscar = ttk.Button(self, text = "Buscar BDs", command= lambda: self.buscar(controller))
-        self.botao_buscar.grid()
-
-        sep1 = ttk.Separator(self)
-        sep1.configure(orient = "vertical")
-        sep1.grid(row = 1, column = 2, rowspan = 6, sticky = "ns")
-
-        self.botao_escolhido = tk.StringVar()
-        self.botao_escolhido.set("criar")
-        
-        self.botao_rad_1 = ttk.Radiobutton(self, text = "BDs localizados",
-                                           variable = self.botao_escolhido, value = "localizar", command= self.escolhas)
-        self.botao_rad_1.grid(row = 1, column = 0, pady = 10)
-        
-        botao_rad_2 = ttk.Radiobutton(self, text = "Criar BD",
-                                      variable = self.botao_escolhido, value = "criar", command=self.escolhas)
-        botao_rad_2.grid(row = 1, column = 4, pady = 10)
-
-   
-        self.listagem = tk.Listbox(self, selectmode=tk.SINGLE)
-        self.listagem.configure(background = "gray")
-        self.listagem.configure(disabledforeground = "black")
-        self.listagem.grid(columnspan = 2, row = 2, rowspan = 4, padx = 10, pady = 10)
-
-##        itens = 
-##        itens.remove(NOME_BANCO)
-##        
-##        for item in itens:
-##            self.listagem.insert(tk.END, item)
-##
-##        self.listagem.selection_set(first=0)##tem q ser dps q inseriu os itens, neh, cumpadi.. agora funfa
-        
-        msg1 = tk.Label(self, text = "Nome:")
-        msg1.grid(row = 3, column = 3)
-
-        self.entrada1 = ttk.Entry(self)  
-        self.entrada1.grid(row = 3, column = 4, padx = 5)
-        
-        msg2 = tk.Label(self, text = "Temporada:") 
-        msg2.grid(row = 4, column = 3, padx = 5)
-
-        self.entrada2 = ttk.Entry(self)
-        self.entrada2.insert(0, "1 a 10000")
-        self.entrada2.grid(row = 4, column = 4, padx = 5)
-        
-
-        botao1 = ttk.Button(self, text = "Menu inicial", command = lambda: controller.ativa_frame("PaginaInicial"))
-        botao1.grid(row = 6, column = 0, pady = 10)
-
-        botao2 = ttk.Button(self, text = "Confirmar", command = lambda: self.confirmar(controller))
-        botao2.grid(row = 6, column = 4, pady = 10)
-
-        self.primeiravez = True
-        
-        self.botao_escolhido.set("localizar")
-        self.botao_buscar.invoke()
-        self.botao_escolhido.set("criar")
-        botao_rad_2.invoke()
-
-
-    def buscar(self, controller):
-        controller.controlador.busca_bds()
-
-        controller.controlador.bancos.remove(NOME_BANCO)
-
-
-        
-        self.botao_escolhido.set("localizar")
-        self.botao_rad_1.invoke()
-
-        if self.primeiravez:
-            self.primeiravez = False
-
-        else:
-            self.listagem.delete(0, 'end')
-        
-        for item in controller.controlador.bancos:
-            self.listagem.insert(tk.END, item)
-
-        self.listagem.selection_set(first=0)##tem q ser dps q inseriu os itens, neh, cumpadi.. agora funfa
-
-
-    def escolhas(self):
-        if self.botao_escolhido.get() == "criar":#bloqueia listagem
-            self.listagem.configure(background = "gray", state=tk.DISABLED)
-            
-            self.entrada1.configure(state=tk.NORMAL)
-            self.entrada2.configure(state=tk.NORMAL)
-
-        else:#bloqeia campos criar bd            
-            self.listagem.configure(background = "white", state=tk.NORMAL)
-            
-            self.entrada1.configure(state=tk.DISABLED)
-            self.entrada2.configure(state=tk.DISABLED)
-
-
-    def confirmar(self, controller):
-        global NOME_BANCO
-        global NOME_TABELA
-        
-        validacao = False
-        
-        if self.botao_escolhido.get() == "criar":
-            controller.controlador.busca_bds()
-            
-            
-            print("### ", self.entrada1.get())
-            print("$$$ ", controller.controlador.bancos)
-
-            try:
-                if not is_valid_filename(self.entrada1.get()) or self.entrada1.get() + ".db" in controller.controlador.bancos:
-                    raise Exception
-                    
-                numero = int(self.entrada2.get())
-                if numero < 1 or numero > 10_000:
-                    raise Exception
-
-            except:
-                tk.messagebox.showinfo(title="ERROU!!!",  message=f"O número da temporada deve estar entre 1 e 10.000.\n\nAlém disso, não é possível usar um nome já existente ou que contenha os seguites caracteres:\n:, *, /, \", ?, >, |, <, \\.\n\nTente novamente!")
-
-            else:
-                tk.messagebox.showinfo(title="Testes criar",  message=f"Criar BD com nome {self.entrada1.get()} e temporada {self.entrada2.get()}")
-                controller.controlador.altera_cria_bd((self.entrada1.get() + ".db", self.entrada2.get()))
-                NOME_BANCO = self.entrada1.get() + ".db"
-                NOME_TABELA = self.entrada2.get()
-
-                print(NOME_BANCO, NOME_TABELA)#deletar
-                
-                validacao = True
-
-        else:            
-            tk.messagebox.showinfo(title="Testes localizar",  message=f"Alterar BD para {self.listagem.get(self.listagem.curselection())}")
-
-            nome = controller.controlador.altera_cria_bd((self.listagem.get(self.listagem.curselection()), None))
-
-            NOME_BANCO = self.listagem.get(self.listagem.curselection())            
-            NOME_TABELA = nome
-
-
-            print(NOME_BANCO, NOME_TABELA)#deletar
-
-            validacao = True
-
-        if validacao:
-            controller.ativa_frame("PaginaInicial")
-
-
-class PaginaTemporadas(tk.Frame):
-
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        
-        self.botao_buscar = ttk.Button(self, text = "Buscar temporadas", command= lambda: self.buscar(controller.controlador.altera_cria_temp("inicial")))
-        self.botao_buscar.pack()
-
-        self.botao_escolhido = tk.StringVar()
-##        self.botao_escolhido.set("criar")
-        
-        self.botao_rad_1 = ttk.Radiobutton(self, text = "Temporadas localizadas",
-                                 variable = self.botao_escolhido, value = "localizar", command= self.escolhas)
-        self.botao_rad_1.pack()
-        
-        self.botao_rad_2 = ttk.Radiobutton(self, text = "Criar temporada",
-                                 variable = self.botao_escolhido, value = "criar", command=self.escolhas)
-        self.botao_rad_2.pack()
-   
-        self.listagem = tk.Listbox(self, selectmode=tk.SINGLE)
-        self.listagem.configure(background = "gray")
-        self.listagem.configure(disabledforeground = "black")
-
-        self.listagem.pack(side="left")
-
-##        for item in self.temporadas:
-##            self.listagem.insert(tk.END, item)
-        
-        msg1 = tk.Label(self, text = "Temporada:")
-        msg1.pack()
-
-        self.entrada1 = ttk.Entry(self)
-        self.entrada1.insert(0, "1 a 10000")
-        self.entrada1.pack()       
-
-        botao1 = tk.Button(self, text = "Página inicial", command = lambda: controller.ativa_frame("PaginaInicial"), bg='brown',fg='white')
-        botao1.pack()
-
-        botao2 = tk.Button(self, text = "Confirmar", command = lambda: self.confirmar(controller), bg='green',fg='white')
-        botao2.pack()
-
-        self.primeiravez = True
-        
-        self.botao_escolhido.set("localizar")
-        self.botao_buscar.invoke()
-        self.botao_escolhido.set("criar")
-        self.botao_rad_2.invoke()
-        
-
-
-    def escolhas(self):
-        if self.botao_escolhido.get() == "criar":#bloqueia listagem
-            self.listagem.configure(background = "gray", state=tk.DISABLED)            
-            self.entrada1.configure(state=tk.NORMAL)
-
-        else:#bloqeia campos criar temporada            
-            self.listagem.configure(background = "white", state=tk.NORMAL)            
-            self.entrada1.configure(state=tk.DISABLED)
-
-
-    def buscar(self, controller):
-        self.temporadas, self.temp_atual = controller
-
-        
-        self.botao_escolhido.set("localizar")
-        self.botao_rad_1.invoke()
-
-        if self.primeiravez:
-            self.primeiravez = False
-
-        else:
-            self.listagem.delete(0, 'end')
-        
-        for item in self.temporadas:
-            self.listagem.insert(tk.END, item)
-
-        self.listagem.selection_set(first=0)##tem q ser dps q inseriu os itens, neh, cumpadi.. agora funfa
-            
-
-    def verif_tabela_existente(self, lista, entrada, temp_atual):
-        if entrada == temp_atual.replace("temporada_", ""):
-            return False
-
-        for x in lista:
-            print("x ", x)
-            if entrada == x.replace("temporada_", ""):
-                return False
-
-        return entrada
-
-
-
-    def confirmar(self, controller):
-        global NOME_TABELA
-        
-        validar = True
-
-        msg = "Erro!\n"
-        
-        if self.botao_escolhido.get() == "criar":
-            try:
-                numero = int(self.entrada1.get())
-                if numero < 1 or numero > 10_000:
-                    print("erro 1")
-                    msg += "O número da temporada deve estar entre 1 e 10.000. Tente novamente!"
-                    raise Exception
-
-                verif = self.verif_tabela_existente(self.temporadas, self.entrada1.get(), self.temp_atual)
-
-                if not verif:
-                    print("erro 2")
-                    msg += "Não foi possível criar essa temporada pois a numeração escolhida já consta no BD."
-                    raise Exception
-
-            except ValueError:
-                tk.messagebox.showinfo(title="ERROU!!!",  message="Valor inválido na numeração da temporada!")
-
-            except Exception:
-                tk.messagebox.showinfo(title="ERROU!!!",  message=msg)
-
-            else:
-                tk.messagebox.showinfo(title="Testes criar",  message=f"Criar temporada de número {self.entrada1.get()}")
-                
-                controller.controlador.altera_cria_temp("criação", self.entrada1.get())
-                NOME_TABELA = self.entrada1.get()
-
-                print("apos criar temporada _>", NOME_TABELA)#deletar
-                
-                validar = True
-                
-                tk.messagebox.showinfo(title="Sucesso!",  message=f"Temporada {self.entrada1.get()} criada com sucesso!")
-
-        else:
-            try:
-                tk.messagebox.showinfo(title="Testes localizar",  message=f"Alterar temporada para {self.listagem.get(self.listagem.curselection())}")
-
-                controller.controlador.altera_cria_temp("alterar", self.listagem.get(self.listagem.curselection()))
-                
-                NOME_TABELA = self.listagem.get(self.listagem.curselection()).replace("temporada_", "")
-
-                print("apos alterar nome tabela", NOME_TABELA)#deletar
-
-                validar = True
-
-                tk.messagebox.showinfo(title="Sucesso!",  message=f"Alteração com sucesso para temporada {NOME_TABELA}!")
-
-            except:
-                pass
-
-        if validar:#volta menu principal
-            self.botao_buscar.invoke()
-            
-            controller.ativa_frame("PaginaInicial")
-
-
-
-            
 
 
 class PaginaTabelas(tk.Frame):
@@ -1057,16 +1084,9 @@ class PaginaTabelas(tk.Frame):
             self.tabela4.delete(*self.tabela4.get_children())
             for item in tmp:
                 self.tabela4.insert('', 'end', values=item)
-##
-##            print("aki rola vitiligssss", NOME_TABELA)#deletar
-
-            
 
         except TypeError:
             tk.messagebox.showinfo(title="Erro",  message="Impossível imprimir a tabela pois não há dados registrados.")
-
-
-
 
    
 
@@ -1080,18 +1100,8 @@ def verif_classes(param):
             CLASSES[x] = param[x]
 
 
-##OBS:
-                    
-## menu_arquivo.add_command(label="Adicionar um jogo", command=lambda: vitili()) ##soh use lambda qndo funcao precisar passar parametros
-        
-##              qndo quiser um popup rapidexter
-##       tk.messagebox.showinfo(title="Testes",  message="Testamento")
 
-
-
-
-
-if __name__ == '__main__':       
+if __name__ == '__main__':       #acho q ao fim dos testes deletar ilson
     interface = Gui()
     if interface.escolha != "SAIR":
         interface.geometry("980x640")

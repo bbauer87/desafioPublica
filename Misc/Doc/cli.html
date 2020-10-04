@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module cli</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>cli</strong></big></big> (version 1.0.1)</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cdesafio%5Cdesafiopublica%5Ccli.py">c:\desafio\desafiopublica\cli.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="cli.html#Cli">Cli</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Cli">class <strong>Cli</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Classe&nbsp;que&nbsp;atua&nbsp;como&nbsp;visão&nbsp;quando&nbsp;o&nbsp;programa&nbsp;é&nbsp;inicializado&nbsp;em&nbsp;linha&nbsp;de&nbsp;comando.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Cli-__init__"><strong>__init__</strong></a>(self, bancos)</dt><dd><tt>Parâmetro:<br>
+----------<br>
+bancos&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Lista&nbsp;de&nbsp;bancos&nbsp;de&nbsp;dados&nbsp;localizados&nbsp;no&nbsp;diretório&nbsp;do&nbsp;programa.</tt></dd></dl>
+
+<dl><dt><a name="Cli-alterar_temporada"><strong>alterar_temporada</strong></a>(self, lista, tabela_atual)</dt><dd><tt>Método&nbsp;responsável&nbsp;por&nbsp;alterar&nbsp;e&nbsp;criar&nbsp;uma&nbsp;temporada&nbsp;ativa&nbsp;no&nbsp;sistema.<br>
+&nbsp;<br>
+Retorna&nbsp;a&nbsp;escolha&nbsp;do&nbsp;usuário&nbsp;(criar&nbsp;ou&nbsp;alterar&nbsp;a&nbsp;temporada)&nbsp;e&nbsp;a&nbsp;temporada<br>
+escolhida&nbsp;ou&nbsp;o&nbsp;parâmetro&nbsp;"Abortar",&nbsp;indicando&nbsp;ao&nbsp;controlador&nbsp;que&nbsp;não&nbsp;será<br>
+alterada&nbsp;a&nbsp;temporada.<br>
+&nbsp;<br>
+Parâmetros:<br>
+----------<br>
+lista&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Lista&nbsp;com&nbsp;as&nbsp;temporadas&nbsp;do&nbsp;BD.<br>
+&nbsp;<br>
+tabela_atual&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Nome&nbsp;da&nbsp;temporada&nbsp;atual.</tt></dd></dl>
+
+<dl><dt><a name="Cli-consultar_tabela"><strong>consultar_tabela</strong></a>(self, itens, colunas)</dt><dd><tt>Método&nbsp;que&nbsp;utiliza&nbsp;a&nbsp;biblioteca&nbsp;"tabulate"&nbsp;para&nbsp;imprimir&nbsp;a&nbsp;tabela&nbsp;de<br>
+maneira&nbsp;organizada.<br>
+&nbsp;<br>
+Parâmetros:<br>
+----------<br>
+itens&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Lista&nbsp;com&nbsp;os&nbsp;dados&nbsp;de&nbsp;cada&nbsp;linha.<br>
+&nbsp;<br>
+colunas&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Lista&nbsp;com&nbsp;os&nbsp;nomes&nbsp;das&nbsp;colunas&nbsp;da&nbsp;tabela.</tt></dd></dl>
+
+<dl><dt><a name="Cli-deletar_temporada"><strong>deletar_temporada</strong></a>(self, lista, tabela_atual)</dt><dd><tt>Método&nbsp;responsável&nbsp;por&nbsp;deletar&nbsp;uma&nbsp;temporada&nbsp;no&nbsp;sistema.<br>
+Se&nbsp;o&nbsp;BD&nbsp;tiver&nbsp;apenas&nbsp;uma&nbsp;temporada,&nbsp;o&nbsp;sistema&nbsp;impede&nbsp;o&nbsp;usuário<br>
+de&nbsp;deletá-la.<br>
+&nbsp;<br>
+Retorna&nbsp;a&nbsp;escolha&nbsp;do&nbsp;usuário&nbsp;se&nbsp;realmente&nbsp;deleta&nbsp;ou&nbsp;não&nbsp;a&nbsp;temporada.<br>
+&nbsp;<br>
+Parâmetros:<br>
+----------<br>
+lista&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Lista&nbsp;com&nbsp;as&nbsp;temporadas&nbsp;do&nbsp;BD.<br>
+&nbsp;<br>
+tabela_atual&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Nome&nbsp;da&nbsp;temporada&nbsp;atual.</tt></dd></dl>
+
+<dl><dt><a name="Cli-entrada_int"><strong>entrada_int</strong></a>(self, limite)</dt><dd><tt>Método&nbsp;em&nbsp;que&nbsp;usuário&nbsp;efetua&nbsp;uma&nbsp;entrada&nbsp;cujo&nbsp;retorno&nbsp;será&nbsp;um&nbsp;int.<br>
+&nbsp;<br>
+Possui&nbsp;consistência&nbsp;ao&nbsp;verificar&nbsp;caracter&nbsp;inválido&nbsp;e&nbsp;se&nbsp;o&nbsp;placar&nbsp;a&nbsp;adicionar<br>
+está&nbsp;dentro&nbsp;dos&nbsp;limites&nbsp;estabelecidos&nbsp;pelo&nbsp;enunciado&nbsp;do&nbsp;desafio.</tt></dd></dl>
+
+<dl><dt><a name="Cli-entrada_str"><strong>entrada_str</strong></a>(self)</dt><dd><tt>Método&nbsp;em&nbsp;que&nbsp;usuário&nbsp;efetua&nbsp;uma&nbsp;entrada&nbsp;cujo&nbsp;retorno&nbsp;será&nbsp;uma&nbsp;string.<br>
+&nbsp;<br>
+Possui&nbsp;consistência&nbsp;ao&nbsp;verificar&nbsp;se&nbsp;foi&nbsp;utilizado&nbsp;algum&nbsp;caracter&nbsp;inválido<br>
+utilizando-se&nbsp;da&nbsp;biblioteca&nbsp;pathvalidate.</tt></dd></dl>
+
+<dl><dt><a name="Cli-escolhe_banco"><strong>escolhe_banco</strong></a>(self)</dt><dd><tt>Método&nbsp;em&nbsp;que&nbsp;usuário&nbsp;cria&nbsp;ou&nbsp;escolhe&nbsp;um&nbsp;BD.<br>
+&nbsp;<br>
+Retorna&nbsp;o&nbsp;nome&nbsp;do&nbsp;BD&nbsp;escolhido&nbsp;bem&nbsp;como&nbsp;a&nbsp;variável&nbsp;"temporada",&nbsp;que&nbsp;pode<br>
+ou&nbsp;ser&nbsp;setada&nbsp;pelo&nbsp;usuário&nbsp;ou&nbsp;pode&nbsp;ser&nbsp;um&nbsp;valor&nbsp;inválido,&nbsp;que&nbsp;indicará<br>
+ao&nbsp;controlador_cli.py&nbsp;que&nbsp;deve&nbsp;ser&nbsp;executada&nbsp;uma&nbsp;busca&nbsp;por&nbsp;temporadas&nbsp;no<br>
+BD&nbsp;escolhido.</tt></dd></dl>
+
+<dl><dt><a name="Cli-escolhe_temporada"><strong>escolhe_temporada</strong></a>(self, lista)</dt><dd><tt>Método&nbsp;que&nbsp;escolhe&nbsp;uma&nbsp;temporada<br>
+&nbsp;<br>
+Parâmetro:<br>
+----------<br>
+lista&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Lista&nbsp;de&nbsp;temporadas&nbsp;localizadas&nbsp;em&nbsp;um&nbsp;BD.</tt></dd></dl>
+
+<dl><dt><a name="Cli-lista_opcoes"><strong>lista_opcoes</strong></a>(self, lista)</dt><dd><tt>Método&nbsp;que&nbsp;imprime&nbsp;com&nbsp;numeração&nbsp;o&nbsp;parâmetro&nbsp;"lista".<br>
+&nbsp;<br>
+Parâmetro:<br>
+----------<br>
+lista&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Lista&nbsp;com&nbsp;os&nbsp;itens&nbsp;a&nbsp;serem&nbsp;impressos&nbsp;com&nbsp;numeração.</tt></dd></dl>
+
+<dl><dt><a name="Cli-menu"><strong>menu</strong></a>(self, nome_bd, tabela)</dt><dd><tt>Método&nbsp;que&nbsp;imprime&nbsp;um&nbsp;menu&nbsp;com&nbsp;opções&nbsp;para&nbsp;o&nbsp;usuário.<br>
+&nbsp;<br>
+Retorna&nbsp;ao&nbsp;controlador&nbsp;a&nbsp;escolha&nbsp;do&nbsp;usuário&nbsp;bem&nbsp;como&nbsp;um&nbsp;eventual<br>
+parâmetro,&nbsp;como&nbsp;nos&nbsp;casos&nbsp;de&nbsp;adicionar&nbsp;placar&nbsp;ou&nbsp;ao&nbsp;deletar&nbsp;uma<br>
+temporada.<br>
+&nbsp;<br>
+Parâmetros:<br>
+----------<br>
+nome_bd&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Nome&nbsp;do&nbsp;BD&nbsp;em&nbsp;uso,&nbsp;pois&nbsp;será&nbsp;impresso&nbsp;no&nbsp;topo&nbsp;do&nbsp;menu.<br>
+&nbsp;<br>
+tabela&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Nome&nbsp;da&nbsp;temporada&nbsp;em&nbsp;uso,&nbsp;que&nbsp;também&nbsp;será&nbsp;impressa&nbsp;no&nbsp;menu.</tt></dd></dl>
+
+<dl><dt><a name="Cli-opcoes_BD"><strong>opcoes_BD</strong></a>(self, lista_ou_str, tipo)</dt><dd><tt>Método&nbsp;responsável&nbsp;por&nbsp;alterar&nbsp;ou&nbsp;deletar&nbsp;um&nbsp;BD.<br>
+&nbsp;<br>
+Retorna&nbsp;a&nbsp;escolha&nbsp;do&nbsp;usuário&nbsp;se&nbsp;realmente&nbsp;deleta&nbsp;ou&nbsp;não&nbsp;o&nbsp;BD.<br>
+Caso&nbsp;haja&nbsp;apenas&nbsp;um&nbsp;BD&nbsp;no&nbsp;diretório,&nbsp;o&nbsp;programa&nbsp;impede&nbsp;o&nbsp;usuário<br>
+de&nbsp;deletá-lo.<br>
+&nbsp;<br>
+Parâmetros:<br>
+----------<br>
+lista_ou_str&nbsp;:&nbsp;list&nbsp;ou&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Lista&nbsp;com&nbsp;os&nbsp;BDs&nbsp;localizados&nbsp;no&nbsp;diretório&nbsp;ou&nbsp;uma&nbsp;string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"abortar".<br>
+&nbsp;<br>
+tipo&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Nome&nbsp;da&nbsp;função&nbsp;a&nbsp;ser&nbsp;executada:&nbsp;alterar&nbsp;ou&nbsp;deletar&nbsp;BD.</tt></dd></dl>
+
+<dl><dt><a name="Cli-verif_tabela_existente"><strong>verif_tabela_existente</strong></a>(self, lista)</dt><dd><tt>Método&nbsp;responsável&nbsp;por&nbsp;verificar&nbsp;se&nbsp;usuário&nbsp;inseriu&nbsp;uma&nbsp;numeração&nbsp;de<br>
+temporada&nbsp;que&nbsp;já&nbsp;exista.<br>
+&nbsp;<br>
+Retorna&nbsp;"False"&nbsp;caso&nbsp;já&nbsp;exista&nbsp;ou&nbsp;o&nbsp;número&nbsp;da&nbsp;temporada&nbsp;caso&nbsp;contrário.<br>
+&nbsp;<br>
+Parâmetros:<br>
+----------<br>
+lista&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Lista&nbsp;com&nbsp;as&nbsp;temporadas&nbsp;do&nbsp;BD.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#7799ee">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Author</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#7799ee"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Bruno&nbsp;Silveira&nbsp;Bauer</td></tr></table>
+</body></html>
