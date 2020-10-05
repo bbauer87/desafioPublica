@@ -39,6 +39,8 @@ python inicializador.py GUI
 # Documentação
 Encontra-se na pasta Misc\Docs, gerada através do pydoc.
 
+A interface gráfica possui um tutorial para cada uma das funcionalidades do programa.
+
 # Testes unitários
 Localizados nos scripts que começam por "testes_", onde utilizou-se o framework unittest.
 
