@@ -37,7 +37,7 @@ Para iniciar interface gráfica:
 python inicializador.py GUI
 
 # Documentação
-Encontra-se na pasta Misc\Docs
+Encontra-se na pasta Misc\Docs, gerada através do pydoc.
 
 # Testes unitários
 Localizados nos scripts que começam por "testes_", onde utilizou-se o framework unittest.
@@ -46,7 +46,9 @@ Localizados nos scripts que começam por "testes_", onde utilizou-se o framework
 Neste programa buscou-se utilizar o princípio da separação de responsabilidades, mais precisamente através do modelo MVC.
 
 O script banco.py atua como modelo do banco de dados;
+
 Os scripts cli.py e gui.py atuam como visões;
+
 Os scripts controlador_gui.py e controlador_cli.py atuam como controladores.
 
 # Observação
