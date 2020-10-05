@@ -53,6 +53,14 @@ Os scripts cli.py e gui.py atuam como visões;
 
 Os scripts controlador_gui.py e controlador_cli.py atuam como controladores.
 
+Neste programa, uma tabela do SQLite é uma temporada, sendo possível adicionar e remover temporadas que são numeradas de 1 a 10.000.
+
+Além disso, é possível através do programa criar e deletar bancos de dados.
+
+Na interface gráfica é possível transitar pelos BDs sem sair da aplicação. Aqui também foi implementado um gráfico que acompanha a evolução das pontuações ao longo da temporada, utilizando-se da biblioteca matplotlib.
+
+A cada tabela gera-se uma segunda tabela com informações baseadas na primeira, como soma dos placares da temporada, média desses placares, top 5 melhores e piores e as somas de cada um desses top 5.
+
 # Observações
 Testado somente em ambiente Windows.
 
