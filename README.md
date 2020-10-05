@@ -53,3 +53,5 @@ Os scripts controlador_gui.py e controlador_cli.py atuam como controladores.
 
 # Observação
 Testado somente em ambiente Windows.
+
+Já foi criado um banco de dados chamado "Maria.db", o qual foi populado conforme tabela que consta no enunciado do Desafio.
