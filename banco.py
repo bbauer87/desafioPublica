@@ -21,8 +21,6 @@ class BD:
             self.conexao = sqlite3.connect(caminho_banco)
             self.cursor = self.conexao.cursor()
 
-            print(">>> Conexão realizada em ", caminho_banco)
-
         except Exception as e:
             print(f"\nErro fatal na conexão com o BD!\n\n")
             print(e)
@@ -38,8 +36,6 @@ class BD:
         '''
         
         self.tabela = f"temporada_{temporada}"
-
-        print(f">>> Definida tabela {self.tabela}")
 
         try:
             self.cursor.execute(f"SELECT * FROM {self.tabela}")

@@ -30,8 +30,13 @@ class TestesBanco(unittest.TestCase):
         e depois encerra a conexão. Testa o construtor e os
         métodos "cria_tabela" e "encerra".
         '''
-        bd = BD(CAMINHO)
-        bd.encerra()
+        try:
+            with self.assertRaises(Exception):
+                bd = BD(CAMINHO)
+                bd.encerra()
+
+        except AssertionError:
+            pass
 
         self.deleta_BD()
         
@@ -44,6 +49,7 @@ class TestesBanco(unittest.TestCase):
         e nenhuma linha. Testa os métodos "printa_tabela" e
         "define_tabela".
         '''
+        
         bd = BD(CAMINHO)
         bd.define_tabela("2020")
         self.assertEqual(bd.tabela, "temporada_2020")
@@ -63,6 +69,7 @@ class TestesBanco(unittest.TestCase):
         a primeira linha deve ser igual à variável "valores". Testa o método
         "adicionar_placar" validando seu último bloco de expressões condicionais.
         '''
+        
         bd = BD(CAMINHO)
         bd.define_tabela("51")
         valores = (1, 12, 12, 12, 0, 0)
@@ -83,6 +90,7 @@ class TestesBanco(unittest.TestCase):
         "retorna_tabela" (usando parâmetro "última linha") e "adiciona_placar",
         validando o bloco "novo máximo" das expressões condicionais deste método.
         '''
+        
         bd = BD(CAMINHO)
         bd.define_tabela("1234")
         valores = (2, 24, 12, 24, 0, 1)
@@ -106,6 +114,7 @@ class TestesBanco(unittest.TestCase):
         validando os blocos "novo mínimo" e "normal" das suas expressões
         condicionais.
         '''
+        
         bd = BD(CAMINHO)
         bd.define_tabela("10000")
         valores = [(1, 30, 30, 30, 0, 0),
@@ -129,6 +138,7 @@ class TestesBanco(unittest.TestCase):
 
         Teste para adicionar placares com três digitos: 123 e 999.
         '''
+        
         bd = BD(CAMINHO)     
         bd.define_tabela("3")   
         bd.adiciona_placar(123, "primeiro jogo")
@@ -152,6 +162,7 @@ class TestesBanco(unittest.TestCase):
         Adiciona 11 jogos com um, dois e três dígitos, quebrando duas vezes o recorde mínimo
         e quatro vezes o recorde máximo. Ao final, espera-se que a tabela seja igual à variável "valores".
         '''
+        
         bd = BD(CAMINHO)     
         bd.define_tabela("8219")   
         valores = [(1, 5, 5, 5, 0, 0),
@@ -206,6 +217,7 @@ class TestesBanco(unittest.TestCase):
         a igualdade de ambas perante a remoção de uma temporada. Testa os métodos
         "define_tabela" e "deleta_tabela".
         '''
+        
         bd = BD(CAMINHO)    
         bd.define_tabela("2020")    
         bd.define_tabela("2021")    
@@ -232,6 +244,7 @@ class TestesBanco(unittest.TestCase):
         dos placares sejam iguais às variáveis "valor_soma" e "valor_média",
         respectivamente. Testa os métodos "soma_placares" e "media_placares".
         '''
+        
         bd = BD(CAMINHO)    
         bd.define_tabela("1497")
         
@@ -278,6 +291,7 @@ class TestesBanco(unittest.TestCase):
         Também é testado o método "printa_tabela_2", cujos dois primeiros valores retornados
         devem ser iguais às variáveis "valor_estats_1" e "valor_estats_2", respectivamente.
         '''
+        
         bd = BD(CAMINHO)    
         bd.define_tabela("404")
 

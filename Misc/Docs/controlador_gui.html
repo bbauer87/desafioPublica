@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module controlador_gui</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>controlador_gui</strong></big></big> (version 1.0.1)</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cdesafio%5Cdesafiopublica%5Ccontrolador_gui.py">c:\desafio\desafiopublica\controlador_gui.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="controlador_gui.html#ControladorGui">ControladorGui</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ControladorGui">class <strong>ControladorGui</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Classe&nbsp;que&nbsp;atua&nbsp;como&nbsp;controlador&nbsp;do&nbsp;programa&nbsp;quando&nbsp;se&nbsp;utiliza&nbsp;interface&nbsp;gráfica.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="ControladorGui-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>A&nbsp;classe&nbsp;inicializa&nbsp;o&nbsp;método&nbsp;"busca_bds"&nbsp;para&nbsp;que&nbsp;se&nbsp;tenha&nbsp;uma&nbsp;lista&nbsp;de&nbsp;BDs.</tt></dd></dl>
+
+<dl><dt><a name="ControladorGui-add_placar"><strong>add_placar</strong></a>(self, placar)</dt><dd><tt>Método&nbsp;que&nbsp;envia&nbsp;da&nbsp;interface&nbsp;gráfica&nbsp;ao&nbsp;BD&nbsp;o&nbsp;placar&nbsp;a&nbsp;ser&nbsp;adicionado.<br>
+&nbsp;<br>
+Efetua&nbsp;verificações&nbsp;se&nbsp;o&nbsp;novo&nbsp;placar&nbsp;quebra&nbsp;os&nbsp;recordes&nbsp;mínimos&nbsp;ou&nbsp;máximos<br>
+da&nbsp;temporada.<br>
+&nbsp;<br>
+Retorna&nbsp;à&nbsp;interface&nbsp;o&nbsp;tipo&nbsp;de&nbsp;inserção&nbsp;na&nbsp;tabela:<br>
+se&nbsp;gerou&nbsp;um&nbsp;novo&nbsp;placar&nbsp;máximo;<br>
+se&nbsp;gerou&nbsp;um&nbsp;novo&nbsp;placar&nbsp;mínimo;<br>
+se&nbsp;não&nbsp;gerou&nbsp;nenhuma&nbsp;quebra&nbsp;de&nbsp;recorde;<br>
+se&nbsp;foi&nbsp;o&nbsp;primeiro&nbsp;jogo&nbsp;da&nbsp;tabela.<br>
+&nbsp;<br>
+Parâmetro:<br>
+----------<br>
+placar&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Qual&nbsp;o&nbsp;placar&nbsp;a&nbsp;ser&nbsp;adicionado&nbsp;na&nbsp;tabela.</tt></dd></dl>
+
+<dl><dt><a name="ControladorGui-altera_cria_bd"><strong>altera_cria_bd</strong></a>(self, param)</dt><dd><tt>Método&nbsp;que&nbsp;altera&nbsp;ou&nbsp;cria&nbsp;um&nbsp;BD.<br>
+&nbsp;<br>
+Primeiro&nbsp;encerra&nbsp;a&nbsp;atual&nbsp;conexão&nbsp;e&nbsp;então&nbsp;cria&nbsp;uma&nbsp;nova&nbsp;com&nbsp;base&nbsp;nos<br>
+parâmetros&nbsp;recebidos.&nbsp;Em&nbsp;seguida,&nbsp;define&nbsp;qual&nbsp;tabela&nbsp;será&nbsp;usada&nbsp;no<br>
+BD.<br>
+&nbsp;<br>
+Retorna&nbsp;para&nbsp;interface&nbsp;gráfica&nbsp;informações&nbsp;para&nbsp;que&nbsp;possam&nbsp;ser&nbsp;definidas<br>
+as&nbsp;variáveis&nbsp;globais&nbsp;relativas&nbsp;aos&nbsp;nomes&nbsp;do&nbsp;BD&nbsp;e&nbsp;da&nbsp;temporada&nbsp;em&nbsp;uso<br>
+no&nbsp;script&nbsp;gui.py.<br>
+&nbsp;<br>
+Parâmetro:<br>
+----------<br>
+param&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Lista&nbsp;que&nbsp;contem&nbsp;o&nbsp;nome&nbsp;do&nbsp;banco&nbsp;e&nbsp;a&nbsp;numeração&nbsp;da&nbsp;temporada.</tt></dd></dl>
+
+<dl><dt><a name="ControladorGui-altera_cria_temp"><strong>altera_cria_temp</strong></a>(self, etapa, param='')</dt><dd><tt>Método&nbsp;que&nbsp;fornece&nbsp;informações&nbsp;ou&nbsp;executa&nbsp;ações&nbsp;na&nbsp;tabela&nbsp;ativa&nbsp;no&nbsp;BD.<br>
+&nbsp;<br>
+O&nbsp;método&nbsp;pode&nbsp;retornar&nbsp;à&nbsp;interface&nbsp;GUI&nbsp;uma&nbsp;lista&nbsp;com&nbsp;as&nbsp;tabelas&nbsp;ativas&nbsp;bem<br>
+como&nbsp;o&nbsp;nome&nbsp;da&nbsp;atual&nbsp;tabela&nbsp;em&nbsp;uso.<br>
+&nbsp;<br>
+Parâmetros:<br>
+----------<br>
+etapa&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Indica&nbsp;ao&nbsp;método&nbsp;qual&nbsp;tipo&nbsp;de&nbsp;ação&nbsp;a&nbsp;executar.<br>
+&nbsp;<br>
+param&nbsp;:&nbsp;str&nbsp;(opcional)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Parâmetro&nbsp;relativo&nbsp;a&nbsp;numeração&nbsp;da&nbsp;temporada.</tt></dd></dl>
+
+<dl><dt><a name="ControladorGui-busca_bds"><strong>busca_bds</strong></a>(self)</dt><dd><tt>Método&nbsp;que&nbsp;faz&nbsp;uma&nbsp;busca&nbsp;pelos&nbsp;bancos&nbsp;de&nbsp;dados&nbsp;no&nbsp;diretório&nbsp;do&nbsp;programa</tt></dd></dl>
+
+<dl><dt><a name="ControladorGui-conecta"><strong>conecta</strong></a>(self, nome_bd)</dt><dd><tt>Método&nbsp;que&nbsp;inicia&nbsp;uma&nbsp;conexão&nbsp;com&nbsp;o&nbsp;BD.<br>
+&nbsp;<br>
+Parâmetro:<br>
+----------<br>
+nome_bd&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Nome&nbsp;do&nbsp;BD&nbsp;a&nbsp;ser&nbsp;conectado.</tt></dd></dl>
+
+<dl><dt><a name="ControladorGui-deletar"><strong>deletar</strong></a>(self, etapa, param='')</dt><dd><tt>Método&nbsp;que&nbsp;possibilita&nbsp;deletar&nbsp;um&nbsp;BD&nbsp;ou&nbsp;uma&nbsp;temporada.<br>
+&nbsp;<br>
+Parâmetros:<br>
+----------<br>
+etapa&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Indica&nbsp;ao&nbsp;método&nbsp;qual&nbsp;tipo&nbsp;de&nbsp;ação&nbsp;a&nbsp;executar.<br>
+&nbsp;<br>
+param&nbsp;:&nbsp;str&nbsp;(opcional)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Parâmetro&nbsp;relativo&nbsp;a&nbsp;numeração&nbsp;da&nbsp;temporada.</tt></dd></dl>
+
+<dl><dt><a name="ControladorGui-encerra"><strong>encerra</strong></a>(self)</dt><dd><tt>Método&nbsp;que&nbsp;encerra&nbsp;uma&nbsp;conexão&nbsp;com&nbsp;o&nbsp;BD.</tt></dd></dl>
+
+<dl><dt><a name="ControladorGui-retorna_dados"><strong>retorna_dados</strong></a>(self)</dt><dd><tt>Método&nbsp;para&nbsp;retornar&nbsp;dados&nbsp;da&nbsp;tabela&nbsp;ativa&nbsp;no&nbsp;BD.<br>
+&nbsp;<br>
+Retorna:<br>
+uma&nbsp;lista&nbsp;com&nbsp;a&nbsp;tabela&nbsp;inteira;<br>
+duas&nbsp;listas,&nbsp;uma&nbsp;com&nbsp;os&nbsp;cinco&nbsp;melhores&nbsp;e&nbsp;outra&nbsp;com&nbsp;os<br>
+cinco&nbsp;piores&nbsp;placares&nbsp;registrados;<br>
+a&nbsp;soma&nbsp;dos&nbsp;placares&nbsp;registrados.</tt></dd></dl>
+
+<dl><dt><a name="ControladorGui-tabela"><strong>tabela</strong></a>(self, tipo, param='')</dt><dd><tt>Método&nbsp;que&nbsp;consulta&nbsp;as&nbsp;tabelas&nbsp;do&nbsp;BD&nbsp;ou&nbsp;define&nbsp;uma.<br>
+&nbsp;<br>
+Se&nbsp;o&nbsp;tipo&nbsp;escolhido&nbsp;for&nbsp;"consulta",&nbsp;retorna&nbsp;uma&nbsp;lista&nbsp;das&nbsp;temporadas<br>
+existentes&nbsp;no&nbsp;BD.<br>
+&nbsp;<br>
+Parâmetros:<br>
+----------<br>
+tipo&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Qual&nbsp;tipo&nbsp;de&nbsp;ação&nbsp;o&nbsp;método&nbsp;deve&nbsp;executar.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+param&nbsp;:&nbsp;str&nbsp;(opcional)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Parâmetro&nbsp;relativo&nbsp;a&nbsp;numeração&nbsp;da&nbsp;temporada.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>argv</strong> = [r'C:\Program Files\Python36-32\lib\pydoc.py', '-w', r'.\controlador_gui.py']</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#7799ee">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Author</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#7799ee"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Bruno&nbsp;Silveira&nbsp;Bauer</td></tr></table>
+</body></html>
